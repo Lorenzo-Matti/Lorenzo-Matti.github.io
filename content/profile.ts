@@ -10,12 +10,12 @@ export const profile = {
 	name: 'Lorenzo Matti',
 	/** Shown at the top left of every page. */
 	initials: 'LM',
-	role: 'Aerospace Engineer',
-	tagline: 'I build fast, accessible interfaces for data-heavy products.',
+	role: 'Aerospace engineer',
+	tagline: 'ahahahahahahahh',
 	email: 'matti.lorenzo@gmail.com',
 	links: [
 		{ label: 'GitHub', href: 'https://github.com/Lorenzo-Matti' },
-		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/lorenzo-matti' }
+		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/lorenzo-matti-35b478200/?isSelfProfile=true' }
 	]
 };
 
