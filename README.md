@@ -30,26 +30,24 @@ Note: in SvelteKit 3 the config lives in `vite.config.ts` (no `svelte.config.js`
 
 ```
 static/
-  video/hero.mp4, hero-poster.jpg     ← replace with your video (same names)
-  images/projects/*.jpg                        ← one image per project
+  video/hero.mp4, hero-poster.jpg     ← homepage video and its still frame
+  projects/<project-id>/              ← one folder of photos/PDFs per project
 src/
   lib/
     data/
-      projects.ts     ← all projects + Tag list (edit here only)
-      site.ts         ← name, role, intro, socials, hero video paths
-    components/
-      Navbar.svelte  Hero.svelte  ProjectCard.svelte  SectionHeading.svelte  Footer.svelte
+      site.ts        ← name, role, links, About text, skills
+      projects.ts    ← all projects (edit here only)
+    components/      ← Navbar, Hero, ProjectCard, Gallery, Footer
   routes/
-    +layout.svelte  +layout.ts (prerender)  layout.css (Tailwind + theme tokens)
-    +page.svelte              → /
-    projects/+page.svelte     → /projects (?tag=TypeScript filter)
+    +page.svelte             → /  (hero, about + skills, projects)
+    projects/[id]/           → /projects/<id>  (one page per project)
 ```
 
 ## Adding a project
 
-1. Drop the image in `static/images/projects/`.
-2. Add an entry to `projects` in `src/lib/data/projects.ts`. New tags go in `TAGS` first.
-3. `npm run check`: a wrong image path or unknown tag fails here, not in production.
+1. Create `static/projects/<project-id>/` and upload the cover, an optional header photo, gallery photos and PDFs.
+2. In `src/lib/data/projects.ts`, copy the example block and change the values. Optional fields can be deleted.
+3. Commit. A wrong file path fails the build (the live site keeps the previous version).
 
 ## Replacing the hero video
 

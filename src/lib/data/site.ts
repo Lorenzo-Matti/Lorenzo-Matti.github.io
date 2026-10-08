@@ -6,13 +6,9 @@ export const site = {
 	initials: 'LM',
 	role: 'Aerospace Engineer',
 	tagline: 'I build fast, accessible interfaces for data-heavy products.',
-	intro: [
-		'ABC',
-		'Lorem ipsum'
-	],
 	email: 'matti.lorenzo@gmail.com',
 	socials: [
-		{ label: 'GitHub', href: 'https://github.com/your-username' },
+		{ label: 'GitHub', href: 'https://github.com/Lorenzo-Matti' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/lorenzo-matti' }
 	],
 	hero: {
@@ -22,3 +18,22 @@ export const site = {
 		poster: 'video/hero-poster.jpg' satisfies AssetPath
 	}
 } as const;
+
+/**
+ * The "About" section under the hero.
+ * Each string in `paragraphs` becomes its own paragraph.
+ */
+export const about = {
+	title: 'About me',
+	paragraphs: ['ABC', 'Lorem ipsum']
+};
+
+/**
+ * Skills, grouped. Add, remove or rename groups freely.
+ * The values below are examples: replace them with your own.
+ */
+export const skills: { group: string; items: string[] }[] = [
+	{ group: 'Engineering', items: ['Structural analysis', 'Propulsion', 'Flight dynamics'] },
+	{ group: 'Software', items: ['MATLAB', 'Python', 'SolidWorks', 'ANSYS'] },
+	{ group: 'Languages', items: ['Italian (native)', 'English (C1)'] }
+];

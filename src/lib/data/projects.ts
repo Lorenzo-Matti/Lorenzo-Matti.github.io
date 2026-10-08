@@ -1,171 +1,86 @@
 import type { AssetPath } from '$app/types';
 
 /**
- * Single source of truth for every project shown on the site.
- * Add, edit or reorder entries here: no component needs to change.
+ * ─── HOW TO ADD A PROJECT ───────────────────────────────────────────────
+ * 1. Create a folder in `static/projects/` named like the project id,
+ *    e.g. `static/projects/hybrid-engine/`, and upload the photos there.
+ * 2. Copy the example block below, paste it at the top of the list
+ *    and change the values. Delete any optional line you do not need.
+ * 3. Commit. The site rebuilds by itself in about two minutes.
+ * ────────────────────────────────────────────────────────────────────────
  */
 
-/**
- * Allowed tags. Keeping them in a closed list means a typo such as
- * "Sveltekit" vs "SvelteKit" is a type error instead of a silent
- * duplicate filter chip.
- */
-export const TAGS = [
-	'SvelteKit',
-	'TypeScript',
-	'Tailwind CSS',
-	'Node.js',
-	'Python',
-	'PostgreSQL',
-	'Three.js',
-	'WebGL',
-	'Design System',
-	'Data Viz'
-] as const;
-
-export type Tag = (typeof TAGS)[number];
-
-export interface ProjectImage {
-	/**
-	 * Path relative to `static/`, e.g. `images/projects/atlas.jpg`.
-	 * Typed by SvelteKit: a path to a file that does not exist is a type error.
-	 */
+export interface Photo {
+	/** Path inside `static/`, e.g. `projects/hybrid-engine/cover.jpg`. */
 	src: AssetPath;
-	/** Describe what the image shows; required for accessibility. */
+	/** Short description of what the photo shows (read by screen readers). */
 	alt: string;
-	/** Intrinsic size, used to reserve space and avoid layout shift. */
-	width: number;
-	height: number;
+}
+
+export interface Pdf {
+	/** Button text, e.g. 'Final report'. */
+	label: string;
+	/** Path inside `static/`, e.g. `projects/hybrid-engine/report.pdf`. */
+	file: AssetPath;
 }
 
 export interface Project {
-	/** URL-safe, unique slug. Also used as the `{#each}` key. */
+	/** Unique, lowercase, words separated by dashes. Becomes the page URL. */
 	id: string;
 	title: string;
-	/** One or two sentences. Keep it short; cards clamp long text. */
-	description: string;
-	tags: Tag[];
-	image: ProjectImage;
-	/** Omit when the source is private. */
-	githubUrl?: string;
-	/** Omit when there is no public deployment. */
-	liveUrl?: string;
-	/** Shown in the homepage showcase when true. */
-	featured?: boolean;
-	/** Used for sorting, newest first. */
 	year: number;
+	/** One sentence shown on the project card. */
+	summary: string;
+	/** Full description on the project page. One string per paragraph. */
+	description: string[];
+	/** Image on the project card. */
+	cover: Photo;
+	/** Wide banner at the top of the project page. Optional: falls back to the cover. */
+	header?: Photo;
+	/** Extra photos shown on the project page. Optional. */
+	gallery?: Photo[];
+	/** Optional. */
+	githubUrl?: string;
+	/** Optional PDF documents (reports, posters, papers). */
+	pdfs?: Pdf[];
+	/** Optional short labels shown under the title, e.g. ['CFD', 'MATLAB']. */
+	tags?: string[];
 }
 
 export const projects: Project[] = [
 	{
-		id: 'atlas-dashboard',
-		title: 'Atlas Dashboard',
-		description:
-			'A real-time analytics dashboard that turns millions of telemetry events into readable, responsive charts.',
-		tags: ['SvelteKit', 'TypeScript', 'Data Viz', 'PostgreSQL'],
-		image: {
-			src: 'images/projects/atlas-dashboard.jpg',
-			alt: 'Dark analytics dashboard with line charts and KPI tiles',
-			width: 1600,
-			height: 1000
+		id: 'example-project',
+		title: 'Example Project',
+		year: 2026,
+		summary: 'A one-sentence summary that appears on the project card.',
+		description: [
+			'This is an example project. Replace this text with what the project was about, what problem it solved and what your role was.',
+			'Use a second paragraph for the results: numbers, lessons learned, or what you would do differently next time.'
+		],
+		cover: { src: 'projects/example-project/cover.jpg', alt: 'Rocket on the launch rail' },
+		header: {
+			src: 'projects/example-project/header.jpg',
+			alt: 'Aerial view of the rocket lifting off'
 		},
-		githubUrl: 'https://github.com/your-username/atlas-dashboard',
-		liveUrl: 'https://atlas.example.com',
-		featured: true,
-		year: 2025
-	},
-	{
-		id: 'orbit-design-system',
-		title: 'Orbit Design System',
-		description:
-			'A token-driven component library with accessible primitives, dark mode and full documentation.',
-		tags: ['Design System', 'TypeScript', 'Tailwind CSS'],
-		image: {
-			src: 'images/projects/orbit-design-system.jpg',
-			alt: 'Grid of UI components: buttons, inputs and cards in light and dark themes',
-			width: 1600,
-			height: 1000
-		},
-		githubUrl: 'https://github.com/your-username/orbit',
-		featured: true,
-		year: 2025
-	},
-	{
-		id: 'terrain-renderer',
-		title: 'Terrain Renderer',
-		description:
-			'Procedural terrain generated on the GPU, streamed in chunks and rendered at 60 fps in the browser.',
-		tags: ['Three.js', 'WebGL', 'TypeScript'],
-		image: {
-			src: 'images/projects/terrain-renderer.jpg',
-			alt: 'Low-poly mountain landscape at dusk rendered in the browser',
-			width: 1600,
-			height: 1000
-		},
-		githubUrl: 'https://github.com/your-username/terrain-renderer',
-		liveUrl: 'https://terrain.example.com',
-		featured: true,
-		year: 2024
-	},
-	{
-		id: 'ledger-api',
-		title: 'Ledger API',
-		description:
-			'A typed REST API for double-entry bookkeeping, with idempotent writes and an audit trail for every change.',
-		tags: ['Node.js', 'TypeScript', 'PostgreSQL'],
-		image: {
-			src: 'images/projects/ledger-api.jpg',
-			alt: 'API documentation page listing ledger endpoints',
-			width: 1600,
-			height: 1000
-		},
-		githubUrl: 'https://github.com/your-username/ledger-api',
-		year: 2024
-	},
-	{
-		id: 'signal-notebook',
-		title: 'Signal Notebook',
-		description:
-			'Interactive notebooks for exploring sensor data, from raw signal to filtered, annotated plots.',
-		tags: ['Python', 'Data Viz'],
-		image: {
-			src: 'images/projects/signal-notebook.jpg',
-			alt: 'Notebook view with a noisy waveform and its filtered version',
-			width: 1600,
-			height: 1000
-		},
-		githubUrl: 'https://github.com/your-username/signal-notebook',
-		year: 2023
-	},
-	{
-		id: 'folio-starter',
-		title: 'Folio Starter',
-		description:
-			'The open-source template behind this site: data-driven, statically rendered and easy to extend.',
-		tags: ['SvelteKit', 'Tailwind CSS', 'TypeScript'],
-		image: {
-			src: 'images/projects/folio-starter.jpg',
-			alt: 'Portfolio homepage with a video hero fading into a dark page',
-			width: 1600,
-			height: 1000
-		},
-		githubUrl: 'https://github.com/your-username/folio-starter',
-		liveUrl: 'https://folio.example.com',
-		year: 2023
+		gallery: [
+			{ src: 'projects/example-project/photo-1.jpg', alt: 'Team presentation in a lecture hall' },
+			{ src: 'projects/example-project/photo-2.jpg', alt: 'Talk on stage in a conference hall' },
+			{ src: 'projects/example-project/photo-3.jpg', alt: 'Carrying the rocket to the launch pad' },
+			{ src: 'projects/example-project/photo-4.jpg', alt: 'Team celebrating after the launch' }
+		],
+		githubUrl: 'https://github.com/Lorenzo-Matti',
+		pdfs: [{ label: 'Example report', file: 'projects/example-project/report.pdf' }],
+		tags: ['Example', 'Rocketry']
 	}
 ];
 
-/** All projects, newest first. */
-export const sortedProjects: Project[] = [...projects].sort((a, b) => b.year - a.year);
-
-export const featuredProjects: Project[] = sortedProjects.filter((p) => p.featured);
-
-/** Only the tags actually used, in the order defined in `TAGS`. */
-export const usedTags: Tag[] = TAGS.filter((tag) => projects.some((p) => p.tags.includes(tag)));
-
-// Fail fast in dev/build if two projects share an id.
+// Fail the build early if two projects share an id.
 const ids = new Set<string>();
 for (const p of projects) {
 	if (ids.has(p.id)) throw new Error(`Duplicate project id: "${p.id}"`);
 	ids.add(p.id);
+}
+
+export function getProject(id: string): Project | undefined {
+	return projects.find((p) => p.id === id);
 }

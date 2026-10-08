@@ -7,9 +7,9 @@ Non serve il terminale: si fa tutto dal browser.
 
 Sostituisci i contenuti finti, altrimenti su LinkedIn linki un sito con scritto "Alex Morgan":
 
-- `src/lib/data/site.ts` → nome, ruolo, testo di presentazione, email, link GitHub/LinkedIn
+- `src/lib/data/site.ts` → nome, ruolo, email, link, testo "About" e skills
 - `src/lib/data/projects.ts` → i tuoi progetti veri
-- `static/images/projects/` e `static/video/` → le tue immagini (stessi nomi file). Il tuo video è già dentro, compresso
+- `static/projects/<id-progetto>/` → una cartella di foto e PDF per ogni progetto
 
 ## 1. Crea l'account e il repository
 
