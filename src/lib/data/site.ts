@@ -7,8 +7,8 @@ export const site = {
 	role: 'Aerospace Engineer',
 	tagline: 'I build fast, accessible interfaces for data-heavy products.',
 	intro: [
-		'I am a frontend engineer focused on the space where design meets systems thinking.',
-		'Over the last few years I have shipped dashboards, design systems and interactive graphics for teams that care about detail. I like typed code, honest performance budgets and interfaces that feel calm under load.'
+		'ABC',
+		'Lorem ipsum'
 	],
 	email: 'matti.lorenzo@gmail.com',
 	socials: [
