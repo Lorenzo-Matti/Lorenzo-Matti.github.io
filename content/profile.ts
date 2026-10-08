@@ -1,28 +1,25 @@
-import type { AssetPath } from '$app/types';
+/**
+ * ─── PROFILE ────────────────────────────────────────────────────────────
+ * Everything about you that appears on the site: hero, About, skills,
+ * contacts. Change the text between the quotes, keep the quotes and commas.
+ * ────────────────────────────────────────────────────────────────────────
+ */
 
-/** Personal details and copy used across the site. */
-export const site = {
+/** Hero (the video screen) and contacts. */
+export const profile = {
 	name: 'Lorenzo Matti',
+	/** Shown at the top left of every page. */
 	initials: 'LM',
 	role: 'Aerospace Engineer',
 	tagline: 'I build fast, accessible interfaces for data-heavy products.',
 	email: 'matti.lorenzo@gmail.com',
-	socials: [
+	links: [
 		{ label: 'GitHub', href: 'https://github.com/Lorenzo-Matti' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/lorenzo-matti' }
-	],
-	hero: {
-		/** Path relative to `static/`. H.264 MP4 plays in every current browser. */
-		videoMp4: 'video/hero.mp4' satisfies AssetPath,
-		/** Shown before the video loads and when reduced motion is requested. */
-		poster: 'video/hero-poster.jpg' satisfies AssetPath
-	}
-} as const;
+	]
+};
 
-/**
- * The "About" section under the hero.
- * Each string in `paragraphs` becomes its own paragraph.
- */
+/** The "About" section. Each string is one paragraph; *asterisks* make italics. */
 export const about = {
 	title: 'About me',
 	paragraphs: ['ABC', 'Lorem ipsum']

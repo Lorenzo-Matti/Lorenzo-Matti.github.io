@@ -1,87 +1,117 @@
 <script lang="ts">
 	import { asset, resolve } from '$app/paths';
-	import Gallery from '#lib/components/Gallery.svelte';
-	import { site } from '#lib/data/site.ts';
+	import RichText from '#lib/components/RichText.svelte';
+	import { formatPeriod } from '#lib/projects.ts';
+	import { profile } from '#content/profile.ts';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	const project = $derived(data.project);
-	const header = $derived(project.header ?? project.cover);
+	const period = $derived(formatPeriod(project));
 </script>
 
 <svelte:head>
-	<title>{project.title} · {site.name}</title>
-	<meta name="description" content={project.summary} />
+	<title>{project.title} · {profile.name}</title>
+	<meta name="description" content={project.abstract[0].replaceAll('*', '')} />
 </svelte:head>
 
-<section class="relative flex min-h-[60svh] items-end overflow-hidden">
-	<img
-		src={asset(header.src)}
-		alt={header.alt}
-		class="absolute inset-0 h-full w-full object-cover"
-	/>
-	<div class="absolute inset-0 bg-bg/40" aria-hidden="true"></div>
-	<div
-		class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-b from-transparent via-bg/70 to-bg"
-		aria-hidden="true"
-	></div>
+<div class="mx-auto max-w-6xl px-6 pt-32 pb-24 md:pt-40">
+	<a
+		href={resolve('/') + '#projects'}
+		class="font-mono text-xs tracking-[0.15em] text-muted uppercase transition-colors hover:text-fg"
+	>
+		<span aria-hidden="true">←</span> All projects
+	</a>
 
-	<div class="relative mx-auto w-full max-w-4xl px-6 pt-32 pb-12">
-		<a href={resolve('/') + '#projects'} class="text-sm text-muted transition-colors hover:text-fg">
-			<span aria-hidden="true">←</span> All projects
-		</a>
-		<p class="mt-6 font-mono text-xs tracking-[0.25em] text-accent uppercase">{project.year}</p>
-		<h1 class="mt-3 text-4xl font-semibold tracking-tight text-fg md:text-6xl">{project.title}</h1>
-		{#if project.tags?.length}
-			<ul class="mt-5 flex flex-wrap gap-2">
-				{#each project.tags as tag (tag)}
-					<li
-						class="rounded-full border border-border bg-bg/40 px-3 py-0.5 font-mono text-xs text-muted"
-					>
-						{tag}
-					</li>
-				{/each}
-			</ul>
-		{/if}
-	</div>
-</section>
-
-<article class="mx-auto max-w-4xl px-6 pb-24">
-	{#if project.githubUrl || project.pdfs?.length}
-		<div class="flex flex-wrap gap-3">
-			{#if project.githubUrl}
-				<a
-					href={project.githubUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg transition-opacity hover:opacity-85"
-				>
-					GitHub repository <span aria-hidden="true">↗</span>
-				</a>
+	<article class="mt-12 grid gap-10 md:grid-cols-[12rem_1fr] md:gap-0">
+		<aside class="md:border-r md:border-border md:pr-8">
+			<p class="font-mono text-sm tracking-[0.15em] text-fg uppercase">{period.start}</p>
+			{#if period.end}
+				<p class="mt-1 font-mono text-sm tracking-[0.15em] text-muted uppercase">– {period.end}</p>
 			{/if}
-			{#each project.pdfs ?? [] as pdf (pdf.file)}
-				<a
-					href={asset(pdf.file)}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="rounded-full border border-border px-5 py-2 text-sm text-fg transition-colors hover:border-fg/40 hover:bg-fg/5"
+			{#if project.label}
+				<p
+					class="mt-6 flex items-center gap-2 font-mono text-xs tracking-[0.15em] text-label uppercase"
 				>
-					{pdf.label} <span class="font-mono text-xs text-muted">PDF</span>
-				</a>
-			{/each}
-		</div>
-	{/if}
+					<span class="size-1.5 bg-label" aria-hidden="true"></span>
+					{project.label}
+				</p>
+			{/if}
+		</aside>
 
-	<div class="mt-10 space-y-5 text-lg leading-relaxed text-muted">
-		{#each project.description as paragraph, i (i)}
-			<p>{paragraph}</p>
-		{/each}
-	</div>
+		<div class="md:pl-12">
+			<h1
+				class="flex items-start gap-4 font-display text-3xl leading-tight font-semibold tracking-tight text-fg md:text-5xl"
+			>
+				<span class="mt-[0.3em] size-4 shrink-0 bg-accent md:size-5" aria-hidden="true"></span>
+				{project.title}
+			</h1>
 
-	{#if project.gallery?.length}
-		<div class="mt-16">
-			<h2 class="mb-6 font-mono text-xs tracking-[0.25em] text-accent uppercase">Gallery</h2>
-			<Gallery photos={project.gallery} />
+			<div class="mt-8 space-y-5 text-lg leading-relaxed text-fg/85 md:text-xl">
+				{#each project.abstract as paragraph, i (i)}
+					<p><RichText text={paragraph} /></p>
+				{/each}
+			</div>
+
+			{#if project.tools?.length}
+				<ul
+					class="mt-10 flex flex-wrap gap-x-3 gap-y-2 border-t border-border pt-8 font-mono text-sm tracking-wider text-muted"
+				>
+					{#each project.tools as tool, i (tool)}
+						<li>
+							{#if i > 0}<span class="mr-3 text-border" aria-hidden="true">/</span>{/if}{tool}
+						</li>
+					{/each}
+				</ul>
+			{/if}
+
+			{#if project.report || project.githubUrl}
+				<div class="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+					{#if project.report}
+						<a
+							href={asset(project.report)}
+							download
+							class="group flex items-stretch border border-accent transition-colors hover:bg-accent/10"
+						>
+							<span
+								class="flex w-14 items-center justify-center bg-accent text-xl text-white"
+								aria-hidden="true"
+							>
+								↓
+							</span>
+							<span class="px-6 py-3">
+								<span class="block font-display text-lg font-medium text-fg">Technical report</span>
+								<span class="block font-mono text-xs tracking-[0.15em] text-muted uppercase">
+									PDF{#if data.pdf?.pages}&nbsp;· {data.pdf.pages}
+										{data.pdf.pages === 1 ? 'page' : 'pages'}{/if}{#if data.pdf}&nbsp;· {data.pdf
+											.size}{/if}
+								</span>
+							</span>
+						</a>
+					{/if}
+					{#if project.githubUrl}
+						<a
+							href={project.githubUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="flex items-stretch border border-border transition-colors hover:border-fg/50"
+						>
+							<span
+								class="flex w-14 items-center justify-center bg-surface text-xl text-fg"
+								aria-hidden="true"
+							>
+								↗
+							</span>
+							<span class="px-6 py-3">
+								<span class="block font-display text-lg font-medium text-fg">Repository</span>
+								<span class="block font-mono text-xs tracking-[0.15em] text-muted uppercase"
+									>GitHub</span
+								>
+							</span>
+						</a>
+					{/if}
+				</div>
+			{/if}
 		</div>
-	{/if}
-</article>
+	</article>
+</div>

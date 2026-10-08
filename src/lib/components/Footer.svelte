@@ -1,23 +1,23 @@
 <script lang="ts">
-	import { site } from '#lib/data/site.ts';
+	import { profile } from '#content/profile.ts';
 
 	const year = new Date().getFullYear();
 </script>
 
 <footer class="border-t border-border">
 	<div
-		class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between"
+		class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 font-mono text-xs tracking-wider text-muted md:flex-row md:items-center md:justify-between"
 	>
-		<p>© {year} {site.name}. Built with SvelteKit.</p>
-		<ul class="flex gap-6">
-			{#each site.socials as social (social.label)}
+		<p>© {year} {profile.name}</p>
+		<ul class="flex gap-6 uppercase">
+			{#each profile.links as link (link.label)}
 				<li>
-					<a href={social.href} target="_blank" rel="noopener noreferrer" class="hover:text-fg">
-						{social.label}
+					<a href={link.href} target="_blank" rel="noopener noreferrer" class="hover:text-fg">
+						{link.label}
 					</a>
 				</li>
 			{/each}
-			<li><a href="mailto:{site.email}" class="hover:text-fg">Email</a></li>
+			<li><a href="mailto:{profile.email}" class="hover:text-fg">Email</a></li>
 		</ul>
 	</div>
 </footer>

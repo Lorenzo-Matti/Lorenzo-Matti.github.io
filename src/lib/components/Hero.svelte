@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
-	import { site } from '#lib/data/site.ts';
+	import { profile } from '#content/profile.ts';
 
 	let video: HTMLVideoElement | undefined = $state();
 
@@ -19,10 +19,11 @@
 </script>
 
 <section class="relative flex min-h-svh items-end overflow-hidden">
+	<!-- To change the video, replace static/video/hero.mp4 and static/video/hero-poster.jpg. -->
 	<video
 		bind:this={video}
 		class="absolute inset-0 h-full w-full object-cover"
-		poster={asset(site.hero.poster)}
+		poster={asset('video/hero-poster.jpg')}
 		autoplay
 		muted
 		loop
@@ -31,43 +32,46 @@
 		aria-hidden="true"
 		tabindex="-1"
 	>
-		<source src={asset(site.hero.videoMp4)} type="video/mp4" />
+		<source src={asset('video/hero.mp4')} type="video/mp4" />
 	</video>
 
-	<!-- Darken the whole frame slightly, then fade the bottom into the page background. -->
-	<div class="absolute inset-0 bg-bg/40" aria-hidden="true"></div>
+	<!-- A light tint for legibility, then a fade into the page background at the bottom. -->
+	<div class="absolute inset-0 bg-bg/15" aria-hidden="true"></div>
 	<div
-		class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-b from-transparent via-bg/70 to-bg"
+		class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent via-bg/60 to-bg"
 		aria-hidden="true"
 	></div>
 
 	<div class="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:pb-32">
-		<p class="animate-fade-up font-mono text-xs tracking-[0.25em] text-accent uppercase">
-			{site.role}
+		<p
+			class="animate-fade-up flex items-center gap-3 font-mono text-xs tracking-[0.25em] text-fg uppercase"
+		>
+			<span class="size-2 bg-accent" aria-hidden="true"></span>
+			{profile.role}
 		</p>
 		<h1
-			class="animate-fade-up mt-4 text-5xl font-semibold tracking-tight text-fg [animation-delay:80ms] sm:text-7xl md:text-8xl"
+			class="animate-fade-up mt-4 font-display text-5xl font-semibold tracking-tight text-fg [animation-delay:80ms] sm:text-7xl md:text-8xl"
 		>
-			{site.name}
+			{profile.name}
 		</h1>
-		<p class="animate-fade-up mt-6 max-w-xl text-lg text-muted [animation-delay:160ms] md:text-xl">
-			{site.tagline}
+		<p class="animate-fade-up mt-6 max-w-xl text-lg text-fg/80 [animation-delay:160ms] md:text-xl">
+			{profile.tagline}
 		</p>
 
 		<div class="animate-fade-up mt-10 flex flex-wrap gap-3 [animation-delay:240ms]">
-			{#each site.socials as social (social.label)}
+			{#each profile.links as link (link.label)}
 				<a
-					href={social.href}
+					href={link.href}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="rounded-full border border-border bg-bg/40 px-5 py-2 text-sm text-fg backdrop-blur transition-colors hover:border-fg/40 hover:bg-fg/5"
+					class="border border-fg/30 bg-bg/40 px-5 py-2 text-sm text-fg backdrop-blur transition-colors hover:border-fg hover:bg-fg/10"
 				>
-					{social.label}
+					{link.label}
 				</a>
 			{/each}
 			<a
-				href="mailto:{site.email}"
-				class="rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg transition-opacity hover:opacity-85"
+				href="mailto:{profile.email}"
+				class="bg-accent px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
 			>
 				Get in touch
 			</a>
@@ -76,10 +80,10 @@
 
 	<a
 		href="#about"
-		class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-muted uppercase transition-colors hover:text-fg md:flex"
+		class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-fg/70 uppercase transition-colors hover:text-fg md:flex"
 	>
 		Scroll
-		<span class="h-10 w-px animate-pulse bg-gradient-to-b from-muted to-transparent"></span>
+		<span class="h-10 w-px animate-pulse bg-gradient-to-b from-fg/70 to-transparent"></span>
 	</a>
 </section>
 

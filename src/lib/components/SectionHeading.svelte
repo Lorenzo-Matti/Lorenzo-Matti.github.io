@@ -3,6 +3,11 @@
 </script>
 
 <div>
-	<p class="font-mono text-xs tracking-[0.25em] text-accent uppercase">{eyebrow}</p>
-	<h2 class="mt-3 text-3xl font-semibold tracking-tight text-fg md:text-4xl">{title}</h2>
+	<p class="flex items-center gap-2 font-mono text-xs tracking-[0.2em] text-label uppercase">
+		<span class="size-1.5 bg-label" aria-hidden="true"></span>
+		{eyebrow}
+	</p>
+	<h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-fg md:text-4xl">
+		{title}
+	</h2>
 </div>
