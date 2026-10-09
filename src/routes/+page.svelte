@@ -6,9 +6,8 @@
 	import { formatPeriod, sortedProjects } from '#lib/projects.ts';
 	import { about, skills } from '#content/profile.ts';
 
-	// Every block below uses the same two columns: a 12rem label column and the text column.
-	const row = 'grid gap-2 md:grid-cols-[12rem_1fr] md:gap-0';
-	const label = 'font-mono text-xs tracking-[0.2em] text-muted uppercase';
+	// About and skills share two columns: a 12rem label column and the text column.
+	const row = 'grid gap-2 md:grid-cols-[12rem_1fr] md:items-baseline md:gap-0';
 </script>
 
 <Hero />
@@ -32,8 +31,8 @@
 	<dl class="mt-20 border-b border-border">
 		{#each skills as { group, items } (group)}
 			<div class="{row} border-t border-border py-5">
-				<dt class="{label} md:pt-1">{group}</dt>
-				<dd class="flex flex-wrap gap-y-1 text-fg/85">
+				<dt class="font-display text-lg font-semibold tracking-tight text-fg">{group}</dt>
+				<dd class="flex flex-wrap gap-y-1 text-fg/65 md:pt-0.5">
 					{#each items as item, i (item)}
 						<span>
 							{item}{#if i < items.length - 1}<span class="mx-2.5 text-muted/60" aria-hidden="true"
@@ -48,33 +47,37 @@
 </section>
 
 <section id="projects" class="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 md:pb-32">
-	<SectionHeading index="02" eyebrow="Work" title="Projects" />
+	<!-- Kept in the original style on request. -->
+	<p class="flex items-center gap-2 font-mono text-xs tracking-[0.2em] text-label uppercase">
+		<span class="size-1.5 bg-label" aria-hidden="true"></span>
+		Work
+	</p>
+	<h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-fg md:text-4xl">
+		Projects
+	</h2>
 
-	<ul class="mt-10 border-b border-border">
+	<ul class="mt-12 border-t border-border">
 		{#each sortedProjects as project (project.id)}
 			{@const period = formatPeriod(project)}
-			<li class="border-t border-border">
+			<li class="border-b border-border">
 				<a
 					href={resolve('/projects/[id]', { id: project.id })}
-					class="group grid gap-2 py-6 md:grid-cols-[12rem_1fr_auto] md:items-baseline md:gap-0"
+					class="group grid gap-2 py-6 md:grid-cols-[12rem_1fr_auto] md:items-baseline md:gap-8"
 				>
-					<span class={label}>
+					<span class="font-mono text-xs tracking-[0.15em] text-muted uppercase">
 						{period.start}{#if period.end}&nbsp;– {period.end}{/if}
 					</span>
-					<span>
+					<span class="flex items-baseline gap-3">
+						<span class="size-2.5 shrink-0 translate-y-[-0.1em] bg-accent" aria-hidden="true"
+						></span>
 						<span
-							class="block font-display text-xl font-medium tracking-tight text-balance text-fg transition-colors group-hover:text-accent-hover md:text-2xl"
+							class="font-display text-xl font-medium tracking-tight text-fg transition-colors group-hover:text-accent-hover md:text-2xl"
 						>
 							{project.title}
 						</span>
-						{#if project.label}
-							<span class="mt-1.5 block font-mono text-xs tracking-[0.15em] text-label uppercase">
-								{project.label}
-							</span>
-						{/if}
 					</span>
 					<span
-						class="hidden pl-8 font-mono text-sm text-muted transition-transform group-hover:translate-x-1 group-hover:text-fg md:block"
+						class="hidden font-mono text-sm text-muted transition-transform group-hover:translate-x-1 group-hover:text-fg md:block"
 						aria-hidden="true">→</span
 					>
 				</a>
