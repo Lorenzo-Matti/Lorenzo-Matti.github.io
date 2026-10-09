@@ -11,11 +11,11 @@ export const profile = {
 	/** Shown at the top left of every page. */
 	initials: 'LM',
 	role: 'Aerospace engineer',
-	tagline: 'ahahahahahahahh',
+	tagline: 'Aerospace Engineering Student at the University of Bologna \n From integrating rocket hardware to designing GNC algorithms',
 	email: 'matti.lorenzo@gmail.com',
 	links: [
 		{ label: 'GitHub', href: 'https://github.com/Lorenzo-Matti' },
-		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/lorenzo-matti-35b478200/?isSelfProfile=true' }
+		{ label: 'Linkedin', href: 'https://www.linkedin.com/in/lorenzo-matti-35b478200/?isSelfProfile=true' }
 	]
 };
 
