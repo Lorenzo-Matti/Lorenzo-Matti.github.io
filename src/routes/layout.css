@@ -24,6 +24,14 @@
 	body {
 		@apply bg-bg font-sans text-fg antialiased;
 	}
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+	p {
+		text-wrap: pretty;
+	}
 	::selection {
 		@apply bg-accent/40;
 	}

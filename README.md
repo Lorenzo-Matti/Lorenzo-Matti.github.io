@@ -27,6 +27,8 @@ Per i contenuti servono solo **due cartelle**. Il resto è codice: non serve toc
 Per scrivere una parola in corsivo mettila tra asterischi: `*Nemesis*`.
 Se nel testo serve un apostrofo (`team's`), racchiudi la frase tra virgolette doppie `"..."` invece che tra apici.
 
+**Non scrivere codice HTML nei testi** (`<strong>`, `<span>`...): comparirebbe tale e quale sul sito. Grassetto, colori e a capo li decide già la grafica. Per esempio sotto il nome ci sono due righe separate, `headline` (in evidenza) e `tagline` (più chiara). In "About me" il primo paragrafo viene mostrato più grande come introduzione, gli altri come testo normale; puoi aggiungerne o toglierne quanti vuoi.
+
 ## Come aggiungere un progetto
 
 1. Se hai il report, caricalo in `static/reports/` (_Add file → Upload files_ dentro quella cartella). Usa un nome semplice, senza spazi: `euroc-2025.pdf`.

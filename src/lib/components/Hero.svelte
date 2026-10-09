@@ -61,9 +61,10 @@
 		>
 			{profile.name}
 		</h1>
-		<p class="animate-fade-up mt-6 max-w-xl text-lg text-fg/80 [animation-delay:160ms] md:text-xl">
-			{profile.tagline}
-		</p>
+		<div class="animate-fade-up mt-6 max-w-2xl text-pretty [animation-delay:160ms]">
+			<p class="text-lg font-medium text-fg md:text-xl">{profile.headline}</p>
+			<p class="mt-1.5 text-base text-fg/70 md:text-lg">{profile.tagline}</p>
+		</div>
 
 		<div class="animate-fade-up mt-10 flex flex-wrap gap-3 [animation-delay:240ms]">
 			{#each profile.links as link (link.label)}
@@ -73,7 +74,7 @@
 					rel="noopener noreferrer"
 					class="border border-fg/30 bg-bg/40 px-5 py-2 text-sm text-fg backdrop-blur transition-colors hover:border-fg hover:bg-fg/10"
 				>
-					{link.label}
+					{link.label}<span class="ml-1.5 text-fg/50" aria-hidden="true">↗</span>
 				</a>
 			{/each}
 			<a

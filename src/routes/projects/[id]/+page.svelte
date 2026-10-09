@@ -47,9 +47,16 @@
 				{project.title}
 			</h1>
 
-			<div class="mt-8 space-y-5 text-lg leading-relaxed text-fg/85 md:text-xl">
+			<!-- Same type scale as the About section: a lead paragraph, then body text. -->
+			<div class="mt-8 space-y-6 md:max-w-[64ch]">
 				{#each project.abstract as paragraph, i (i)}
-					<p><RichText text={paragraph} /></p>
+					<p
+						class={i === 0
+							? 'text-xl leading-relaxed text-fg md:text-2xl md:leading-snug'
+							: 'text-[1.0625rem] leading-[1.75] text-fg/70'}
+					>
+						<RichText text={paragraph} />
+					</p>
 				{/each}
 			</div>
 
@@ -59,7 +66,9 @@
 				>
 					{#each project.tools as tool, i (tool)}
 						<li>
-							{#if i > 0}<span class="mr-3 text-border" aria-hidden="true">/</span>{/if}{tool}
+							{tool}{#if i < project.tools.length - 1}<span class="ml-3 text-muted/60" aria-hidden="true"
+									>/</span
+								>{/if}
 						</li>
 					{/each}
 				</ul>
