@@ -38,7 +38,9 @@ export const about = {
  * The values below are examples: replace them with your own.
  */
 export const skills: { group: string; items: string[] }[] = [
-	{ group: 'Engineering', items: ['Structural analysis', 'Propulsion', 'Flight dynamics'] },
-	{ group: 'Software', items: ['MATLAB', 'Python', 'SolidWorks', 'ANSYS'] },
-	{ group: 'Languages', items: ['Italian (native)', 'English (C1)'] }
+	{ group: 'Programming', items: ['MATLAB', 'C++', 'LaTeX'] },
+	{ group: 'GNC', items: ['6-DOF Flight Dynamics', 'Filter Design', 'Guidance Laws', 'Closed-Loop Control', 'Simulink'] },
+	{ group: 'Electronics', items: ['Arduino', 'Avionics System Design', 'PCB design', 'Hardware-in-the-Loop Testing'] },
+	{ group: 'Project Management', items: ['Technical Team Leadership', 'Timeline & Budget Management', 'Cross-functional Integration'] },
+	{ group: 'Languages', items: ['Italian (native)', 'English (B2)'] }
 ];
