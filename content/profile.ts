@@ -11,7 +11,7 @@ export const profile = {
 	/** Shown at the top left of every page. */
 	initials: 'LM',
 	role: 'Aerospace engineer',
-	tagline: 'Aerospace Engineering Student at the University of Bologna \n From integrating rocket hardware to designing GNC algorithms',
+	tagline: '<strong class="block font-bold">Aerospace Engineering Student at the University of Bologna</strong><span class="whitespace-nowrap">From integrating rocket hardware to designing GNC algorithms</span>',
 	email: 'matti.lorenzo@gmail.com',
 	links: [
 		{ label: 'GitHub', href: 'https://github.com/Lorenzo-Matti' },
@@ -22,7 +22,15 @@ export const profile = {
 /** The "About" section. Each string is one paragraph; *asterisks* make italics. */
 export const about = {
 	title: 'About me',
-	paragraphs: ['ABC', 'Lorem ipsum']
+	paragraphs: [
+  "I am an aerospace engineering student at the University of Bologna with a strong foundation in mechatronics, flight mechanics, and hands-on systems development. What drives me most is closing the gap between mathematical models and the unforgiving reality of physical flight hardware.",
+
+  "Much of who I am as an engineer comes from co-founding Aurora Rocketry. Starting around a table as a handful of students, we grew it into a multidisciplinary team of nearly 100 people and launched our rockets at the European Rocketry Challenge (EuRoC). Leading the electronics division and managing system integration in those early stages taught me how to foster ownership, make critical trade-offs under countdown pressure, and ensure complex subsystems seamlessly communicate.",
+
+  "As our rockets matured, my focus naturally shifted from pad-level hardware to vehicle dynamics and autonomy—moving from keeping systems alive to steering, stabilizing, and guiding them. This steered me directly toward Guidance, Navigation, and Control (GNC). From developing active airbrake control algorithms to investigating radar target tracking and state estimation for my thesis, I’ve become deeply invested in extracting truth from noisy sensor data and turning 6-DOF dynamic models into precise, closed-loop actuation.",
+
+  "Today, I am drawn to advanced state estimation, integrated navigation systems, and autonomous trajectory control—the exact intersection where dynamic modeling, algorithmic rigor, and flight physics meet to make complex aerospace missions possible."
+]
 };
 
 /**
