@@ -19,7 +19,12 @@
 </script>
 
 <section class="relative flex min-h-svh items-end overflow-hidden">
-	<!-- To change the video, replace static/video/hero.mp4 and static/video/hero-poster.jpg. -->
+	<!--
+		To change the video, replace the files in static/video/ keeping the same names
+		(see README for the commands that produce them). The browser picks the first
+		source it can play: a lighter 720p file on phones, sharp AV1 on desktop,
+		and H.264 as the fallback for browsers without AV1 (e.g. older Safari).
+	-->
 	<video
 		bind:this={video}
 		class="absolute inset-0 h-full w-full object-cover"
@@ -32,7 +37,9 @@
 		aria-hidden="true"
 		tabindex="-1"
 	>
-		<source src={asset('video/hero.mp4')} type="video/mp4" />
+		<source src={asset('video/hero-720.mp4')} type="video/mp4" media="(max-width: 768px)" />
+		<source src={asset('video/hero-1080.av1.mp4')} type={'video/mp4; codecs="av01.0.08M.10"'} />
+		<source src={asset('video/hero-1080.mp4')} type="video/mp4" />
 	</video>
 
 	<!-- A light tint for legibility, then a fade into the page background at the bottom. -->

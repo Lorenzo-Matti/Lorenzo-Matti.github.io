@@ -15,7 +15,7 @@ Per i contenuti servono solo **due cartelle**. Il resto è codice: non serve toc
 | Testo "About me" e skills                     | `content/profile.ts`           |
 | Aggiungere o modificare un progetto           | `content/projects.ts`          |
 | PDF dei report tecnici                        | `static/reports/`              |
-| Video della schermata iniziale                | `static/video/hero.mp4`        |
+| Video della schermata iniziale                | `static/video/hero-*.mp4` (3 file, vedi sotto) |
 | Fotogramma mostrato prima che il video parta  | `static/video/hero-poster.jpg` |
 
 ## Come modificare un testo
@@ -45,8 +45,24 @@ I progetti sono ordinati da soli dal più recente. Numero di pagine e dimensione
 
 ## Come cambiare il video
 
-Sostituisci `static/video/hero.mp4` con un file **con lo stesso nome**. Tienilo sotto i 10 MB: GitHub rifiuta file oltre 100 MB e un video pesante rallenta molto il sito da telefono.
-Per comprimerlo: `ffmpeg -i originale.mp4 -an -vf scale=1280:-2,fps=30 -c:v libx264 -crf 30 -preset slow -pix_fmt yuv420p -movflags +faststart hero.mp4`
+Il video esiste in 3 versioni in `static/video/`. Il browser ne scarica **una sola**, la più adatta:
+
+| File                  | Chi lo riceve                         | Qualità                   |
+| --------------------- | ------------------------------------- | ------------------------- |
+| `hero-1080.av1.mp4`   | computer con browser recenti          | 1080p, la più nitida      |
+| `hero-1080.mp4`       | browser che non leggono AV1 (Safari vecchi) | 1080p H.264         |
+| `hero-720.mp4`        | telefoni (schermo fino a 768 px)      | 720p, più leggero         |
+
+Per cambiarlo, sostituisci i 3 file mantenendo **gli stessi nomi**. Ognuno deve restare sotto i 100 MB (limite di GitHub), meglio sotto i 25 MB. Comandi usati (da `originale.mp4`):
+
+```sh
+# AV1 1080p (la versione nitida)
+ffmpeg -i originale.mp4 -an -vf scale=1920:-2,fps=30 -c:v libsvtav1 -preset 5 -crf 38 -pix_fmt yuv420p10le -svtav1-params tune=0 -movflags +faststart hero-1080.av1.mp4
+# H.264 1080p (riserva)
+ffmpeg -i originale.mp4 -an -vf scale=1920:-2,fps=30 -c:v libx264 -preset slower -tune film -crf 23 -maxrate 3M -bufsize 6M -pix_fmt yuv420p -movflags +faststart hero-1080.mp4
+# H.264 720p (telefoni)
+ffmpeg -i originale.mp4 -an -vf scale=1280:-2,fps=30 -c:v libx264 -preset slower -tune film -crf 25 -maxrate 1.5M -bufsize 3M -pix_fmt yuv420p -movflags +faststart hero-720.mp4
+```
 
 ## Se la pubblicazione diventa rossa
 
