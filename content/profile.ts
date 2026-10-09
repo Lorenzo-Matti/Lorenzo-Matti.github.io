@@ -10,7 +10,7 @@ export const profile = {
 	name: 'Lorenzo Matti',
 	/** Shown at the top left of every page. */
 	initials: 'LM',
-	role: 'Aerospace engineer',
+	role: 'GNC & Avionics',
 	/** First line under your name, in bold. Plain text only. */
 	headline: 'Aerospace Engineering Student at the University of Bologna',
 	/** Second line, lighter. Plain text only. */
