@@ -47,6 +47,4 @@ export const photos: AssetPath[] = [
 	'gallery/30.webp',
 	'gallery/31.webp',
 	'gallery/32.webp',
-	'gallery/33.webp',
-	'gallery/34.webp',
 ];
