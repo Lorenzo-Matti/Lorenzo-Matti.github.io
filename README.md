@@ -15,6 +15,7 @@ Per i contenuti servono solo **due cartelle**. Il resto è codice: non serve toc
 | Testo "About me" e skills                     | `content/profile.ts`           |
 | Aggiungere o modificare un progetto           | `content/projects.ts`          |
 | PDF dei report tecnici                        | `static/reports/`              |
+| Foto della galleria in fondo alla pagina      | `static/gallery/` + `content/gallery.ts` |
 | Video della schermata iniziale                | `static/video/hero-*.mp4` (3 file, vedi sotto) |
 | Fotogramma mostrato prima che il video parta  | `static/video/hero-poster.jpg` |
 
@@ -44,6 +45,14 @@ Se nel testo serve un apostrofo (`team's`), racchiudi la frase tra virgolette do
 4. **Commit changes**.
 
 I progetti sono ordinati da soli dal più recente. Numero di pagine e dimensione del PDF vengono calcolati in automatico.
+
+## Come gestire la galleria foto
+
+1. Carica la foto in `static/gallery/` (_Add file → Upload files_). Meglio JPEG o WebP di circa 1600 px sul lato lungo, con un nome semplice senza spazi.
+2. Apri `content/gallery.ts` e aggiungi una riga con il percorso, ad esempio `'gallery/35.jpg',`.
+3. L'ordine delle righe è l'ordine sul sito. Le prime 8 si vedono subito, le altre con il pulsante "Show all" (il numero si cambia in `visibleAtFirst`).
+
+Le foto attuali sono già ridimensionate e senza dati di posizione GPS. Se carichi una foto direttamente dal telefono, il GPS resta dentro il file: meglio esportarla prima senza posizione.
 
 ## Come cambiare il video
 

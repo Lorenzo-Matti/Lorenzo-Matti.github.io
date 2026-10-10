@@ -2,6 +2,9 @@
 	import { asset } from '$app/paths';
 	import { profile } from '#content/profile.ts';
 
+	// Optional small line above the name: add `role: '...'` in content/profile.ts to show it.
+	const role = (profile as { role?: string }).role;
+
 	let video: HTMLVideoElement | undefined = $state();
 
 	// Respect users who ask for less motion: keep the poster frame only.
@@ -50,12 +53,14 @@
 	></div>
 
 	<div class="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:pb-32">
-		<p
-			class="animate-fade-up flex items-center gap-3 font-mono text-xs tracking-[0.25em] text-fg uppercase"
-		>
-			<span class="size-2 bg-accent" aria-hidden="true"></span>
-			{profile.role}
-		</p>
+		{#if role}
+			<p
+				class="animate-fade-up flex items-center gap-3 font-mono text-xs tracking-[0.25em] text-fg uppercase"
+			>
+				<span class="size-2 bg-accent" aria-hidden="true"></span>
+				{role}
+			</p>
+		{/if}
 		<h1
 			class="animate-fade-up mt-4 font-display text-5xl font-semibold tracking-tight text-fg [animation-delay:80ms] sm:text-7xl md:text-8xl"
 		>

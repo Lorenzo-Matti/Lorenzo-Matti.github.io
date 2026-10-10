@@ -25,13 +25,17 @@ export const profile = {
 export const about = {
 	title: 'About me',
 	paragraphs: [
-		"I am an aerospace engineering student at the University of Bologna with a strong foundation in mechatronics, flight mechanics, and hands-on systems development. What drives me most is closing the gap between mathematical models and the unforgiving reality of physical flight hardware.",
+		"I like to understand how a system knows where it is, where it should go and how to get there. This is what Guidance, Navigation and Control is about, and it is the field I want to work in. Today I'm studying for a BSc in Aerospace Engineering at the University of Bologna, but to explain how I got here, I need to start a bit earlier.",
 
-		"Much of who I am as an engineer comes from co-founding Aurora Rocketry. Starting around a table as a handful of students, we grew it into a multidisciplinary team of nearly 100 people and launched our rockets at the European Rocketry Challenge (EuRoC). Leading the electronics division and managing system integration in those early stages taught me how to foster ownership, make critical trade-offs under countdown pressure, and ensure complex subsystems seamlessly communicate.",
+		"Back in high school, I studied mechatronics at a technical institute, but most of the practical work I did there was my own choice, not part of the program. For the final exam, a classmate and I decided to spend eight months on a project outside the program: a solar tracker with automatic battery management, a weather station and a Bluetooth app that we built to read the data.",
 
-		"As our rockets matured, my focus naturally shifted from pad-level hardware to vehicle dynamics and autonomy—moving from keeping systems alive to steering, stabilizing, and guiding them. This steered me directly toward Guidance, Navigation, and Control (GNC). From developing active airbrake control algorithms to investigating radar target tracking and state estimation for my thesis, I’ve become deeply invested in extracting truth from noisy sensor data and turning 6-DOF dynamic models into precise, closed-loop actuation.",
+		"When I arrived at university, the first year was very theoretical, so in the evenings I kept building electronics projects at home. I like putting theory into practice, and electronics and making were a hobby I really enjoyed. I shared these projects online, and they caught the attention of Aurora Rocketry, a student association that was just being founded. After seeing my videos and a few interviews, the president and vice-president asked me to lead the electronics division, when I was still in my first year.",
 
-		"Today, I am drawn to advanced state estimation, integrated navigation systems, and autonomous trajectory control—the exact intersection where dynamic modeling, algorithmic rigor, and flight physics meet to make complex aerospace missions possible."
+		"As co-founder and head of electronics, I coordinated a team of eight people while the association grew from five to about one hundred members. I defined the avionics architecture, the roles in the team and the test standards. Eighteen months after we started, we took part in EuRoC 2025 in Portugal and finished 2nd in our category and 8th overall.",
+
+		"Working on a real rocket showed me something new: the problems I found most interesting were about how the rocket moves and how to guide it, where flight dynamics and control theory meet real hardware. After EuRoC, I realized that I liked electronics, but not as much as this. So in November 2025 I left my role as team leader, after looking for my replacement early so that the team would not be left without a lead, and I joined the GNC team as a member. There I spent almost a year working on active airbrakes, where I designed and compared different closed-loop controllers in simulation. The system has not flown yet. Electronics still helps me today: before working on GNC algorithms, I had already seen how real sensors behave on board, with their noise and their limits.",
+
+		"Now I'm doing my bachelor's thesis and an internship on state estimation and target tracking. Next, I plan to do my master's degree in Bologna, with an Erasmus semester at TU Delft."
 	]
 };
 

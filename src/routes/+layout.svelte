@@ -17,7 +17,7 @@
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter+Tight:wght@500;600&family=Inter:ital,wght@0,400;0,500;1,400&display=swap"
 	/>
-	<title>{profile.name} · {profile.role}</title>
+	<title>{profile.name} · {profile.headline}</title>
 	<meta name="description" content="{profile.headline}. {profile.tagline}." />
 </svelte:head>
 

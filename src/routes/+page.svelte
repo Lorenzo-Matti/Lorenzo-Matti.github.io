@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import Gallery from '#lib/components/Gallery.svelte';
 	import Hero from '#lib/components/Hero.svelte';
 	import RichText from '#lib/components/RichText.svelte';
 	import SectionHeading from '#lib/components/SectionHeading.svelte';
@@ -28,7 +29,12 @@
 		{/each}
 	</div>
 
-	<dl class="mt-20 border-b border-border">
+	<!-- Skills close the About block: same anchor in the menu, own numbered opener. -->
+	<div class="mt-24 md:mt-32">
+		<SectionHeading index="02" eyebrow="Toolkit" title="Skills" />
+	</div>
+
+	<dl class="mt-12 border-b border-border">
 		{#each skills as { group, items } (group)}
 			<div class="{row} border-t border-border py-5">
 				<dt class="font-display text-lg font-semibold tracking-tight text-fg">{group}</dt>
@@ -47,14 +53,8 @@
 </section>
 
 <section id="projects" class="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 md:pb-32">
-	<!-- Kept in the original style on request. -->
-	<p class="flex items-center gap-2 font-mono text-xs tracking-[0.2em] text-label uppercase">
-		<span class="size-1.5 bg-label" aria-hidden="true"></span>
-		Work
-	</p>
-	<h2 class="mt-3 font-display text-3xl font-semibold tracking-tight text-fg md:text-4xl">
-		Projects
-	</h2>
+	<!-- Project rows keep their original style; only the opener matches the other sections. -->
+	<SectionHeading index="03" eyebrow="Work" title="Projects" />
 
 	<ul class="mt-12 border-t border-border">
 		{#each sortedProjects as project (project.id)}
@@ -84,4 +84,9 @@
 			</li>
 		{/each}
 	</ul>
+</section>
+
+<section id="gallery" class="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 md:pb-32">
+	<SectionHeading index="04" eyebrow="Gallery" title="Behind the projects" />
+	<Gallery />
 </section>
