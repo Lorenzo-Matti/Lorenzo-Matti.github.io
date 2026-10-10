@@ -10,11 +10,10 @@ export const profile = {
 	name: 'Lorenzo Matti',
 	/** Shown at the top left of every page. */
 	initials: 'LM',
-	role: 'GNC & Avionics',
 	/** First line under your name, in bold. Plain text only. */
 	headline: 'Aerospace Engineering Student at the University of Bologna',
 	/** Second line, lighter. Plain text only. */
-	tagline: 'From integrating rocket hardware to designing GNC algorithms',
+	tagline: 'From rocket hardware to designing GNC algorithms',
 	email: 'matti.lorenzo@gmail.com',
 	links: [
 		{ label: 'GitHub', href: 'https://github.com/Lorenzo-Matti' },
