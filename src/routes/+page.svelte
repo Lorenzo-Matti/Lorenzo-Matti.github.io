@@ -6,6 +6,12 @@
 	import SectionHeading from '#lib/components/SectionHeading.svelte';
 	import { formatPeriod, sortedProjects } from '#lib/projects.ts';
 	import { about, skills } from '#content/profile.ts';
+	import { analytics } from '#content/analytics.ts';
+	import { trackSections } from '#lib/analytics.ts';
+
+	$effect(() => {
+		if (analytics.websiteId) return trackSections(['about', 'skills', 'projects', 'gallery']);
+	});
 
 	// About and skills share two columns: a 12rem label column and the text column.
 	const row = 'grid gap-2 md:grid-cols-[12rem_1fr] md:items-baseline md:gap-0';
@@ -30,7 +36,7 @@
 	</div>
 
 	<!-- Skills close the About block: same anchor in the menu, own numbered opener. -->
-	<div class="mt-24 md:mt-32">
+	<div id="skills" class="mt-24 scroll-mt-24 md:mt-32">
 		<SectionHeading index="02" eyebrow="Toolkit" title="Skills" />
 	</div>
 

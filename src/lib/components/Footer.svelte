@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { profile } from '#content/profile.ts';
 
 	const year = new Date().getFullYear();
@@ -18,6 +19,7 @@
 				</li>
 			{/each}
 			<li><a href="mailto:{profile.email}" class="hover:text-fg">Email</a></li>
+			<li><a href={resolve('/privacy')} class="hover:text-fg">Privacy</a></li>
 		</ul>
 	</div>
 </footer>

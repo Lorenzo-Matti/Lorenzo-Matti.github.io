@@ -71,6 +71,8 @@
 						<a
 							href={asset(project.report)}
 							download
+							data-umami-event="report-download"
+							data-umami-event-project={project.id}
 							class="group flex items-stretch border border-accent transition-colors hover:bg-accent/10"
 						>
 							<span
