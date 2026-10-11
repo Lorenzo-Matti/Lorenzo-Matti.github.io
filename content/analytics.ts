@@ -8,7 +8,7 @@
  */
 export const analytics = {
 	/** "Website ID" from Umami → Website → Edit → Tracking code. */
-	websiteId: '',
+	websiteId: '711dd3cc-f00d-480c-9f91-ad9f640e1f01',
 	/** The address after src= in the same tracking code. */
 	scriptUrl: 'https://cloud.umami.is/script.js',
 	/** Only these domains are counted, so local previews are ignored. */
