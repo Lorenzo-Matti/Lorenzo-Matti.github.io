@@ -4,6 +4,15 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<script>
+			// Owner switch: ?me=off stops Umami counting visits from this browser, ?me=on undoes it.
+			// Runs before the tracker, so even the visit that sets it is not counted.
+			try {
+				var me = new URLSearchParams(location.search).get('me');
+				if (me === 'off') localStorage.setItem('umami.disabled', '1');
+				if (me === 'on') localStorage.removeItem('umami.disabled');
+			} catch (e) {}
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
