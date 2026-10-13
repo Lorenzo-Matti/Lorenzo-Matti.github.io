@@ -83,7 +83,9 @@ export const projects: Project[] = [
 			'Work in progress',
 			'...'
 		],
-		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
+		reports: [
+			{ title: 'Nemesis Technical Report (EuRoC 2025)', file: 'reports/nemesis-euroc-2025-technical-report.pdf' }
+		],
 		links: [
 			{ label: 'European Rocketry Challenge (EuRoC)', url: 'https://euroc.pt' },
 			{
