@@ -35,7 +35,7 @@ export const about = {
 
 		"Working on a real rocket showed me something new: the problems I found most interesting were about how the rocket moves and how to guide it, where flight dynamics and control theory meet real hardware. After EuRoC, I realized that I liked electronics, but not as much as this. So in November 2025 I left my role as team leader, after looking for my replacement early so that the team would not be left without a lead, and I joined the GNC team as a member. There I spent almost a year working on active airbrakes, where I designed and compared different closed-loop controllers in simulation. The system has not flown yet. Electronics still helps me today: before working on GNC algorithms, I had already seen how real sensors behave on board, with their noise and their limits.",
 
-		"Now I'm working on my bachelor's thesis and an internship on the tracking and interception of a non-cooperative target. I estimate the target's state with an Interacting Multiple Model (IMM) filter, which combines several motion models to follow a target that can change its maneuver, and I use a PD guidance law to intercept it. Next, I plan to do my master's degree in Bologna, with an Erasmus semester at TU Delft."
+		"Now I'm working on my bachelor's thesis and an internship on the tracking and interception of a non-cooperative target. I estimate the target's state with an Interacting Multiple Model (IMM) filter, which combines several motion models to follow a target that can change its maneuver, and I use a PD guidance law to intercept it. Next, I plan to do a master's degree in Space Engineering in Bologna, with an Erasmus semester at TU Delft."
 	]
 };
 
