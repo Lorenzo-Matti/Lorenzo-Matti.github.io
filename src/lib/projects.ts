@@ -17,11 +17,10 @@ export function formatPeriod(p: Project): { start: string; end?: string } {
 	return { start, end: p.end === 'present' ? 'Present' : formatMonth(p.end) };
 }
 
-/** All projects, most recent first. */
-export const sortedProjects: Project[] = [...projects].sort((a, b) =>
-	(b.end === 'present' ? '9999' : (b.end ?? b.start)).localeCompare(
-		a.end === 'present' ? '9999' : (a.end ?? a.start)
-	)
+/** All projects, most recent first: by end date ('present' first), then by start date. */
+const endKey = (p: Project) => (p.end === 'present' ? '9999-99' : (p.end ?? p.start));
+export const sortedProjects: Project[] = [...projects].sort(
+	(a, b) => endKey(b).localeCompare(endKey(a)) || b.start.localeCompare(a.start)
 );
 
 export function getProject(id: string): Project | undefined {

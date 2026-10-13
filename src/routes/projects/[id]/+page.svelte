@@ -2,10 +2,19 @@
 	import { asset, resolve } from '$app/paths';
 	import RichText from '#lib/components/RichText.svelte';
 	import { profile } from '#content/profile.ts';
+	import type { AssetPath } from '$app/types';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	const project = $derived(data.project);
+
+	// Viewer for links made of images (e.g. newspaper pages), shown full width.
+	let viewer: HTMLDialogElement | undefined = $state();
+	let viewing: { label: string; images: AssetPath[] } | null = $state(null);
+	function openImages(label: string, images: AssetPath[]) {
+		viewing = { label, images };
+		viewer?.showModal();
+	}
 
 	// Project pages show only four things: title, description, reports, useful links.
 	const label = 'font-mono text-xs tracking-[0.2em] text-label uppercase';
@@ -68,18 +77,28 @@
 			<h2 class={label}>Links</h2>
 			<ul class="mt-4 divide-y divide-border">
 				{#each project.links as link (link.label)}
+					{@const row = 'group flex w-full items-baseline justify-between gap-6 py-3 text-left'}
 					<li>
-						<a
-							href={'url' in link ? link.url : asset(link.file)}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="group flex items-baseline justify-between gap-6 py-3"
-						>
-							<span class="text-fg transition-colors group-hover:text-accent-hover">
-								<RichText text={link.label} />
-							</span>
-							<span class="font-mono text-sm text-muted" aria-hidden="true">↗</span>
-						</a>
+						{#if 'images' in link}
+							<button type="button" class={row} onclick={() => openImages(link.label, link.images)}>
+								<span class="text-fg transition-colors group-hover:text-accent-hover">
+									<RichText text={link.label} />
+								</span>
+								<span class="font-mono text-sm text-muted" aria-hidden="true">↗</span>
+							</button>
+						{:else}
+							<a
+								href={'url' in link ? link.url : asset(link.file)}
+								target="_blank"
+								rel="noopener noreferrer"
+								class={row}
+							>
+								<span class="text-fg transition-colors group-hover:text-accent-hover">
+									<RichText text={link.label} />
+								</span>
+								<span class="font-mono text-sm text-muted" aria-hidden="true">↗</span>
+							</a>
+						{/if}
 					</li>
 				{/each}
 			</ul>
@@ -87,3 +106,29 @@
 	{/if}
 
 </article>
+
+<dialog
+	bind:this={viewer}
+	onclose={() => (viewing = null)}
+	onclick={(e) => e.target === viewer && viewer?.close()}
+	class="m-0 h-full max-h-none w-full max-w-none bg-bg/95 p-0 backdrop:bg-bg/80"
+	aria-label="Image viewer"
+>
+	{#if viewing}
+		<div class="sticky top-0 z-10 flex items-center justify-between gap-6 border-b border-border bg-bg px-6 py-4">
+			<p class="text-sm text-fg/80"><RichText text={viewing.label} /></p>
+			<button
+				type="button"
+				onclick={() => viewer?.close()}
+				class="font-mono text-xs tracking-[0.15em] text-muted uppercase hover:text-fg"
+			>
+				Close ✕
+			</button>
+		</div>
+		<div class="mx-auto flex max-w-4xl flex-col gap-8 px-4 py-8">
+			{#each viewing.images as image (image)}
+				<img src={asset(image)} alt="" class="w-full" loading="lazy" />
+			{/each}
+		</div>
+	{/if}
+</dialog>

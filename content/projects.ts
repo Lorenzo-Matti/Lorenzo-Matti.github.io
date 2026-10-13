@@ -16,8 +16,14 @@ import type { AssetPath } from '$app/types';
 
 type YearMonth = `${number}-${number}`;
 
-/** A useful link: an external web address, or a file inside `static/`. */
-export type ProjectLink = { label: string; url: string } | { label: string; file: AssetPath };
+/**
+ * A useful link: an external web address, a file inside `static/`,
+ * or one or more images (e.g. newspaper pages) shown in a viewer on the page.
+ */
+export type ProjectLink =
+	| { label: string; url: string }
+	| { label: string; file: AssetPath }
+	| { label: string; images: AssetPath[] };
 
 export interface Project {
 	/** Unique, lowercase, words separated by dashes. Becomes the page address. */
@@ -94,7 +100,7 @@ export const projects: Project[] = [
 			{ label: 'European Rocketry Challenge (EuRoC)', url: 'https://euroc.pt' },
 			{
 				label: '*Il Resto del Carlino*, 14 Oct 2025: front page and article (p. 5)',
-				file: 'press/carlino-2025-10-14.webp'
+				images: ['press/carlino-2025-10-14-cover.webp', 'press/carlino-2025-10-14-p5.webp']
 			}
 		]
 		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
