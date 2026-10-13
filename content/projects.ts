@@ -84,8 +84,8 @@ export const projects: Project[] = [
 	// ── End of test projects ──
 	{
 		id: 'cfd-fem-sounding-rocket',
-		title: 'CFD-FEM Aero-Structural Analysis of a Sounding Rocket',
-		start: '2025-07',
+		title: 'Nemesis Sounding Rocket (EuRoC 2025)',
+		start: '2025-04',
 		end: '2025-10',
 		description: [
 			"Would *Nemesis* hold under the worst loads it could meet in flight: maximum dynamic pressure, maximum angle of attack and peak thrust, all at once? I built the CFD-to-FEM workflow that answered it in the team's EuRoC Technical Report, carrying the aerodynamic loads down to every component on the critical path."
@@ -93,12 +93,8 @@ export const projects: Project[] = [
 		links: [
 			{ label: 'European Rocketry Challenge (EuRoC)', url: 'https://euroc.pt' },
 			{
-				label: 'Il Resto del Carlino, 14 Oct 2025: front page',
-				file: 'press/carlino-2025-10-14-cover.webp'
-			},
-			{
-				label: 'Il Resto del Carlino, 14 Oct 2025: "Un sogno che prende il volo" (p. 5)',
-				file: 'press/carlino-2025-10-14-p5.webp'
+				label: '*Il Resto del Carlino*, 14 Oct 2025: front page and article (p. 5)',
+				file: 'press/carlino-2025-10-14.webp'
 			}
 		]
 		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]

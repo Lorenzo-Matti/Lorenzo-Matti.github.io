@@ -7,7 +7,7 @@
 	let { data }: PageProps = $props();
 	const project = $derived(data.project);
 
-	// Project pages show only four things: title, description, useful links, reports.
+	// Project pages show only four things: title, description, reports, useful links.
 	const label = 'font-mono text-xs tracking-[0.2em] text-label uppercase';
 </script>
 
@@ -36,29 +36,6 @@
 		{/each}
 	</div>
 
-	{#if project.links?.length}
-		<section class="mt-14 border-t border-border pt-6">
-			<h2 class={label}>Links</h2>
-			<ul class="mt-4 divide-y divide-border">
-				{#each project.links as link (link.label)}
-					<li>
-						<a
-							href={'url' in link ? link.url : asset(link.file)}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="group flex items-baseline justify-between gap-6 py-3"
-						>
-							<span class="text-fg transition-colors group-hover:text-accent-hover">
-								<RichText text={link.label} />
-							</span>
-							<span class="font-mono text-sm text-muted" aria-hidden="true">↗</span>
-						</a>
-					</li>
-				{/each}
-			</ul>
-		</section>
-	{/if}
-
 	{#if data.reports.length}
 		<section class="mt-14 border-t border-border pt-6">
 			<h2 class={label}>{data.reports.length === 1 ? 'Report' : 'Reports'}</h2>
@@ -86,4 +63,27 @@
 			</ul>
 		</section>
 	{/if}
+	{#if project.links?.length}
+		<section class="mt-14 border-t border-border pt-6">
+			<h2 class={label}>Links</h2>
+			<ul class="mt-4 divide-y divide-border">
+				{#each project.links as link (link.label)}
+					<li>
+						<a
+							href={'url' in link ? link.url : asset(link.file)}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex items-baseline justify-between gap-6 py-3"
+						>
+							<span class="text-fg transition-colors group-hover:text-accent-hover">
+								<RichText text={link.label} />
+							</span>
+							<span class="font-mono text-sm text-muted" aria-hidden="true">↗</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
 </article>
