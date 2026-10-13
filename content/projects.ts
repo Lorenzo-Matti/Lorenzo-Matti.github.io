@@ -60,8 +60,8 @@ export const projects: Project[] = [
 		]
 	},
 	{
-		id: 'Active Airbrake Controll (Atlas Sounding Rocket)',
-		title: 'Active Airbrake Controll (Atlas Sounding Rocket)',
+		id: 'Active Airbrake Controll for Atlas Sounding Rocket',
+		title: 'Active Airbrake Controll for Atlas Sounding Rocket',
 		start: '2025-10',
 		end: '2026-10',
 		description: [
