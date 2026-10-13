@@ -99,7 +99,7 @@ export const projects: Project[] = [
 		links: [
 			{ label: 'European Rocketry Challenge (EuRoC)', url: 'https://euroc.pt' },
 			{
-				label: '*Il Resto del Carlino*, 14 Oct 2025: front page and article (p. 5)',
+				label: '"Il campus va a razzo": front-page story in *Il Resto del Carlino* (14 Oct 2025)',
 				images: ['press/carlino-2025-10-14-cover.webp', 'press/carlino-2025-10-14-p5.webp']
 			}
 		]
