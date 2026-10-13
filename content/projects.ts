@@ -60,8 +60,8 @@ export const projects: Project[] = [
 		]
 	},
 	{
-		id: 'Atlas Sounding Rocket',
-		title: 'Atlas sounding rocket',
+		id: 'Active Airbrake Controll (Atlas Sounding Rocket)',
+		title: 'Active Airbrake Controll (Atlas Sounding Rocket)',
 		start: '2025-10',
 		end: '2026-10',
 		description: [
@@ -70,8 +70,8 @@ export const projects: Project[] = [
 		reports: [{ title: 'Technical report', file: 'reports/test-report.pdf' }]
 	},
 	{
-		id: 'Nemesis Sounding Rocket (EuRoC 2025)',
-		title: 'Nemesis Sounding Rocket (EuRoC 2025)',
+		id: 'Avionics for Nemesis Sounding Rocket (EuRoC 2025)',
+		title: 'Avionics for Nemesis Sounding Rocket (EuRoC 2025)',
 		start: '2025-04',
 		end: '2025-10',
 		description: [
@@ -87,8 +87,8 @@ export const projects: Project[] = [
 		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
 	},
 	{
-		id: 'Borealis Sounding Rocket',
-		title: 'Borealis Sounding Rocket',
+		id: 'Avionics for Borealis Sounding Rocket',
+		title: 'Avionics for Borealis Sounding Rocket',
 		start: '2024-02',
 		end: '2025-06',
 		description: ['Placeholder text to preview a project with links only and no report.'],
