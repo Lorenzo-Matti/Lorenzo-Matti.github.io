@@ -25,17 +25,15 @@ export const profile = {
 export const about = {
 	title: 'About me',
 	paragraphs: [
-		"I like to understand how a system knows where it is, where it should go and how to get there. This is what Guidance, Navigation and Control is about, and it is the field I want to work in. Today I'm studying for a BSc in Aerospace Engineering at the University of Bologna, but to explain how I got here, I need to start a bit earlier.",
+		"I'm studying Aerospace Engineering at the University of Bologna, and I want to work in Guidance, Navigation and Control.",
 
-		"Back in high school, I studied mechatronics at a technical institute, but most of the practical work I did there was my own choice, not part of the program. For the final exam, a classmate and I decided to spend eight months on a project outside the program: a solar tracker with automatic battery management, a weather station and a Bluetooth app that we built to read the data.",
+		"I started from hardware. In my first year I co-founded Aurora Rocketry, when it was still just an idea, and I led its electronics team until the European Rocketry Challenge 2025, where we finished 2nd in our category. With the team I designed two avionics boards, with sensors, 868 MHz telemetry and the recovery deployment circuit.",
 
-		"When I arrived at university, the first year was very theoretical, so in the evenings I kept building electronics projects at home. I like putting theory into practice, and electronics and making were a hobby I really enjoyed. I shared these projects online, and they caught the attention of two students who were starting Aurora Rocketry. At that time it was still just an idea, not an official association yet. After seeing my videos and a few interviews, they asked me to lead the electronics part of the project, when I was still in my first year.",
+		"While working on the avionics, I realized I was more interested in what the flight computer does with the data than in the boards themselves. So after the competition I handed over my role as team lead and joined the GNC team, where I worked on the airbrake control and compared different controllers in simulation. The system has not flown yet.",
 
-		"As co-founder and head of electronics, I coordinated a team of eight people while the association grew from five to about one hundred members. I defined the avionics architecture, the roles in the team and the test standards. Eighteen months after we started, we took part in EuRoC 2025 in Portugal and finished 2nd in our category and 8th overall.",
+		"Today I'm working on my bachelor's thesis and an internship on the tracking and interception of a non-cooperative target, using an IMM filter for state estimation and a PD guidance law.",
 
-		"Working on a real rocket showed me something new: the problems I found most interesting were about how the rocket moves and how to guide it, where flight dynamics and control theory meet real hardware. After EuRoC, I realized that I liked electronics, but not as much as this. So in November 2025 I left my role as team leader, after looking for my replacement early so that the team would not be left without a lead, and I joined the GNC team as a member. There I spent almost a year working on active airbrakes, where I designed and compared different closed-loop controllers in simulation. The system has not flown yet. Electronics still helps me today: before working on GNC algorithms, I had already seen how real sensors behave on board, with their noise and their limits.",
-
-		"Now I'm working on my bachelor's thesis and an internship on the tracking and interception of a non-cooperative target. I estimate the target's state with an Interacting Multiple Model (IMM) filter, which combines several motion models to follow a target that can change its maneuver, and I use a PD guidance law to intercept it. Next, I plan to do a master's degree in Space Engineering in Bologna, with an Erasmus semester at TU Delft."
+		"After my bachelor's, I plan to do a master's degree in Space Engineering in Bologna, and I would like to spend a semester abroad, ideally at TU Delft."
 	]
 };
 
