@@ -8,7 +8,7 @@
 </script>
 
 <header
-	class="grid grid-cols-[3rem_1fr] items-baseline border-t border-border pt-6 md:grid-cols-[12rem_1fr] md:pt-8"
+	class="grid grid-cols-[3rem_1fr] items-baseline border-t border-fg/50 pt-6 md:grid-cols-[12rem_1fr] md:pt-8"
 >
 	<span class="font-mono text-xs tracking-[0.2em] text-accent">{index}</span>
 	<h2
