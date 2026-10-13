@@ -6,7 +6,7 @@ import type { EntryGenerator, PageServerLoad } from './$types';
 // Prerender one page per project.
 export const entries: EntryGenerator = () => sortedProjects.map((p) => ({ id: p.id }));
 
-/** Size and page count of a PDF in `static/`, shown on the download button. */
+/** Size and page count of a PDF in `static/`, shown next to each report. */
 async function pdfInfo(file: string) {
 	const bytes = await readFile(`static/${file}`);
 	// Rough page count: each page object carries "/Type /Page" (but not "/Pages").
@@ -19,5 +19,8 @@ async function pdfInfo(file: string) {
 export const load: PageServerLoad = async ({ params }) => {
 	const project = getProject(params.id);
 	if (!project) error(404, 'Project not found');
-	return { project, pdf: project.report ? await pdfInfo(project.report) : undefined };
+	const reports = await Promise.all(
+		(project.reports ?? []).map(async (r) => ({ ...r, ...(await pdfInfo(r.file)) }))
+	);
+	return { project, reports };
 };

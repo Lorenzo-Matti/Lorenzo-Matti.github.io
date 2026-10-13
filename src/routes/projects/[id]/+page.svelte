@@ -1,21 +1,22 @@
 <script lang="ts">
 	import { asset, resolve } from '$app/paths';
 	import RichText from '#lib/components/RichText.svelte';
-	import { formatPeriod } from '#lib/projects.ts';
 	import { profile } from '#content/profile.ts';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 	const project = $derived(data.project);
-	const period = $derived(formatPeriod(project));
+
+	// Project pages show only four things: title, description, useful links, reports.
+	const label = 'font-mono text-xs tracking-[0.2em] text-label uppercase';
 </script>
 
 <svelte:head>
 	<title>{project.title} · {profile.name}</title>
-	<meta name="description" content={project.abstract[0].replaceAll('*', '')} />
+	<meta name="description" content={project.description[0].replaceAll('*', '')} />
 </svelte:head>
 
-<div class="mx-auto max-w-6xl px-6 pt-32 pb-24 md:pt-40">
+<article class="mx-auto max-w-3xl px-6 pt-32 pb-24 md:pt-40">
 	<a
 		href={resolve('/') + '#projects'}
 		class="font-mono text-xs tracking-[0.15em] text-muted uppercase transition-colors hover:text-fg"
@@ -23,121 +24,66 @@
 		<span aria-hidden="true">←</span> All projects
 	</a>
 
-	<article class="mt-12 grid gap-10 md:grid-cols-[12rem_1fr] md:gap-0">
-		<aside class="md:border-r md:border-border md:pr-8">
-			<p class="font-mono text-sm tracking-[0.15em] text-fg uppercase">{period.start}</p>
-			{#if period.end}
-				<p class="mt-1 font-mono text-sm tracking-[0.15em] text-muted uppercase">– {period.end}</p>
-			{/if}
-			{#if project.label}
-				<p
-					class="mt-6 flex items-center gap-2 font-mono text-xs tracking-[0.15em] text-label uppercase"
-				>
-					<span class="size-1.5 bg-label" aria-hidden="true"></span>
-					{project.label}
-				</p>
-			{/if}
-		</aside>
+	<h1
+		class="mt-10 font-display text-3xl leading-tight font-semibold tracking-tight text-fg md:text-5xl"
+	>
+		{project.title}
+	</h1>
 
-		<div class="md:pl-12">
-			<h1
-				class="flex items-start gap-4 font-display text-3xl leading-tight font-semibold tracking-tight text-fg md:text-5xl"
-			>
-				<span class="mt-[0.3em] size-4 shrink-0 bg-accent md:size-5" aria-hidden="true"></span>
-				{project.title}
-			</h1>
+	<div class="mt-8 space-y-5 text-lg leading-relaxed text-fg/80">
+		{#each project.description as paragraph, i (i)}
+			<p><RichText text={paragraph} /></p>
+		{/each}
+	</div>
 
-			<div class="mt-8 space-y-5 text-lg leading-relaxed text-fg/85 md:text-xl">
-				{#each project.abstract as paragraph, i (i)}
-					<p><RichText text={paragraph} /></p>
-				{/each}
-			</div>
-
-			{#if project.tools?.length}
-				<ul
-					class="mt-10 flex flex-wrap gap-x-3 gap-y-2 border-t border-border pt-8 font-mono text-sm tracking-wider text-muted"
-				>
-					{#each project.tools as tool, i (tool)}
-						<li>
-							{#if i > 0}<span class="mr-3 text-border" aria-hidden="true">/</span>{/if}{tool}
-						</li>
-					{/each}
-				</ul>
-			{/if}
-
-			{#if project.report || project.githubUrl}
-				<div class="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-					{#if project.report}
+	{#if project.links?.length}
+		<section class="mt-14 border-t border-border pt-6">
+			<h2 class={label}>Links</h2>
+			<ul class="mt-4 divide-y divide-border">
+				{#each project.links as link (link.label)}
+					<li>
 						<a
-							href={asset(project.report)}
+							href={'url' in link ? link.url : asset(link.file)}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="group flex items-baseline justify-between gap-6 py-3"
+						>
+							<span class="text-fg transition-colors group-hover:text-accent-hover">
+								<RichText text={link.label} />
+							</span>
+							<span class="font-mono text-sm text-muted" aria-hidden="true">↗</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if data.reports.length}
+		<section class="mt-14 border-t border-border pt-6">
+			<h2 class={label}>{data.reports.length === 1 ? 'Report' : 'Reports'}</h2>
+			<ul class="mt-4 divide-y divide-border">
+				{#each data.reports as report, i (i)}
+					<li>
+						<a
+							href={asset(report.file)}
 							download
 							data-umami-event="report-download"
 							data-umami-event-project={project.id}
-							class="group flex items-stretch border border-accent transition-colors hover:bg-accent/10"
+							class="group flex items-baseline justify-between gap-6 py-3"
 						>
-							<span
-								class="flex w-14 items-center justify-center bg-accent text-xl text-white"
-								aria-hidden="true"
-							>
-								↓
+							<span class="text-fg transition-colors group-hover:text-accent-hover">
+								{report.title}
 							</span>
-							<span class="px-6 py-3">
-								<span class="block font-display text-lg font-medium text-fg">Technical report</span>
-								<span class="block font-mono text-xs tracking-[0.15em] text-muted uppercase">
-									PDF{#if data.pdf?.pages}&nbsp;· {data.pdf.pages}
-										{data.pdf.pages === 1 ? 'page' : 'pages'}{/if}{#if data.pdf}&nbsp;· {data.pdf
-											.size}{/if}
-								</span>
+							<span class="shrink-0 font-mono text-xs tracking-[0.15em] text-muted uppercase">
+								PDF{#if report.pages}&nbsp;· {report.pages}
+									{report.pages === 1 ? 'page' : 'pages'}{/if}&nbsp;· {report.size}
+								<span class="ml-2 text-accent" aria-hidden="true">↓</span>
 							</span>
 						</a>
-					{/if}
-					{#if project.githubUrl}
-						<a
-							href={project.githubUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="flex items-stretch border border-border transition-colors hover:border-fg/50"
-						>
-							<span
-								class="flex w-14 items-center justify-center bg-surface text-xl text-fg"
-								aria-hidden="true"
-							>
-								↗
-							</span>
-							<span class="px-6 py-3">
-								<span class="block font-display text-lg font-medium text-fg">Repository</span>
-								<span class="block font-mono text-xs tracking-[0.15em] text-muted uppercase"
-									>GitHub</span
-								>
-							</span>
-						</a>
-					{/if}
-				</div>
-			{/if}
-			{#if project.press?.length}
-				<section class="mt-12 border-t border-border pt-8">
-					<h2 class="font-mono text-xs tracking-[0.2em] text-label uppercase">Press</h2>
-					<ul class="mt-4 space-y-3">
-						{#each project.press as item (item.file)}
-							<li>
-								<a
-									href={asset(item.file)}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="group flex flex-wrap items-baseline gap-x-3 gap-y-1"
-								>
-									<span class="font-display text-lg text-fg transition-colors group-hover:text-accent-hover"
-										><i>{item.outlet}</i>, {item.title}</span
-									>
-									<span class="font-mono text-xs tracking-[0.15em] text-muted uppercase"
-										>{item.date} ↗</span
-									>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</section>
-			{/if}
-		</div>
-	</article>
-</div>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+</article>

@@ -32,19 +32,20 @@ Se nel testo serve un apostrofo (`team's`), racchiudi la frase tra virgolette do
 
 ## Come aggiungere un progetto
 
-1. Se hai il report, caricalo in `static/reports/` (_Add file → Upload files_ dentro quella cartella). Usa un nome semplice, senza spazi: `euroc-2025.pdf`.
+Ogni progetto ha una pagina con solo quattro cose: **titolo**, **descrizione**, **link utili** e **report PDF**.
+
+1. Carica i PDF in `static/reports/` (_Add file → Upload files_ dentro quella cartella). Usa nomi semplici, senza spazi: `euroc-2025.pdf`. Se hai immagini di articoli, caricale in `static/press/`.
 2. Apri `content/projects.ts`, copia un blocco `{ ... },` esistente e incollalo **in cima** alla lista.
 3. Cambia i campi:
    - `id`: nome breve, minuscolo, con trattini. Diventa l'indirizzo della pagina.
-   - `start` / `end`: mese e anno nella forma `'2025-07'`. Per un progetto ancora in corso scrivi `end: 'present'`.
-   - `label`: piccola etichetta, ad esempio `'EuRoC Report'` (facoltativa).
-   - `abstract`: il testo. Ogni frase tra virgolette separata da virgola diventa un paragrafo.
-   - `tools`: strumenti e metodi (facoltativo).
-   - `report: 'reports/euroc-2025.pdf'`: il PDF caricato al punto 1 (facoltativo).
-   - `githubUrl`: link alla repository (facoltativo).
+   - `title`: il titolo, uguale nella lista e nella pagina del progetto.
+   - `start` / `end`: mese e anno nella forma `'2025-07'`, mostrati solo nella lista. Per un progetto in corso scrivi `end: 'present'`.
+   - `description`: il testo. Ogni frase tra virgolette, separata da virgola, diventa un paragrafo.
+   - `links` (facoltativo): `{ label: 'Nome del link', url: 'https://...' }` per un sito, oppure `{ label: '...', file: 'press/nome.webp' }` per un file caricato.
+   - `reports` (facoltativo): uno o più `{ title: 'Technical report', file: 'reports/euroc-2025.pdf' }`.
 4. **Commit changes**.
 
-I progetti sono ordinati da soli dal più recente. Numero di pagine e dimensione del PDF vengono calcolati in automatico.
+I progetti si ordinano da soli dal più recente. Numero di pagine e dimensione dei PDF vengono calcolati in automatico.
 
 ## Come gestire la galleria foto
 
@@ -80,7 +81,7 @@ ffmpeg -i originale.mp4 -an -vf scale=1280:-2,fps=30 -c:v libx264 -preset slower
 Apri **Actions**, clicca l'esecuzione rossa e poi `build`. Di solito l'errore indica file e riga. I casi più comuni:
 
 - manca una virgola o un apice;
-- il nome del PDF in `report` non corrisponde al file caricato;
+- il nome del PDF in `reports` non corrisponde al file caricato;
 - una data non è nella forma `'2025-07'`.
 
 ## Per chi lavora sul codice
