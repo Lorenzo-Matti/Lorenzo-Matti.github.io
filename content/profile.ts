@@ -47,7 +47,7 @@ export const skills: { group: string; items: string[] }[] = [
 	{ group: 'Programming', items: ['MATLAB', 'Simulink', 'C++', 'LaTeX'] },
 	{
 		group: 'GNC',
-		items: ['6-DOF Flight Dynamics', 'Filtering techniques,', 'Guidance Laws', 'Closed-Loop Control', 'Monte Carlo Analysis']
+		items: ['6-DOF Flight Dynamics', 'Filtering techniques', 'Guidance Laws', 'Closed-Loop Control', 'Monte Carlo Analysis']
 	},
 	{
 		group: 'Electronics',
