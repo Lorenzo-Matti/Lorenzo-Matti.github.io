@@ -40,8 +40,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "cfd-fem-sounding-rocket",
-    title: "CFD-FEM Aero-Structural Analysis of a Sounding Rocket",
-    start: "2025-07",
+    title: "Nemesis sounding rocket (Euroc 2025)",
+    start: "2025-04",
     end: "2025-10",
     label: "EuRoC Report",
     abstract: [
