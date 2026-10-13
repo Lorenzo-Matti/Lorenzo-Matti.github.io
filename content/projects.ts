@@ -50,14 +50,14 @@ export const projects: Project[] = [
 		start: '2025-09',
 		end: 'present',
 		description: [
-			'Placeholder text to preview the layout. A general description of the project goes here: the problem, what you did and the main result, in two or three short paragraphs.',
-			'This is a second paragraph, to show the spacing between paragraphs.'
+			'Work in progress',
+			'...'
 		],
-		links: [{ label: 'Example website', url: 'https://example.com' }],
-		reports: [
-			{ title: 'Thesis (draft)', file: 'reports/test-report.pdf' },
-			{ title: 'Internship report', file: 'reports/test-report.pdf' }
-		]
+		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
+		//links: [
+			//{ label: 'Example link one', url: 'https://example.com' },
+			//{ label: 'Example link two', url: 'https://example.org' }
+		//]
 	},
 	{
 		id: 'Active Airbrake Controll for Atlas Sounding Rocket',
@@ -65,9 +65,14 @@ export const projects: Project[] = [
 		start: '2025-10',
 		end: '2026-10',
 		description: [
-			'Placeholder text to preview a project with a report but no links.'
+			'Work in progress',
+			'...'
 		],
-		reports: [{ title: 'Technical report', file: 'reports/test-report.pdf' }]
+		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
+		//links: [
+			//{ label: 'Example link one', url: 'https://example.com' },
+			//{ label: 'Example link two', url: 'https://example.org' }
+		//]
 	},
 	{
 		id: 'Avionics for Nemesis Sounding Rocket (EuRoC 2025)',
@@ -75,34 +80,47 @@ export const projects: Project[] = [
 		start: '2025-04',
 		end: '2025-10',
 		description: [
-			"Would *Nemesis* hold under the worst loads it could meet in flight: maximum dynamic pressure, maximum angle of attack and peak thrust, all at once? I built the CFD-to-FEM workflow that answered it in the team's EuRoC Technical Report, carrying the aerodynamic loads down to every component on the critical path."
+			'Work in progress',
+			'...'
 		],
+		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
 		links: [
 			{ label: 'European Rocketry Challenge (EuRoC)', url: 'https://euroc.pt' },
 			{
-				label: '"Il campus va a razzo": front-page story in *Il Resto del Carlino* (14 Oct 2025)',
+				label: '"Il campus va a razzo": front-page story in *Il Resto del Carlino*',
 				images: ['press/carlino-2025-10-14-cover.webp', 'press/carlino-2025-10-14-p5.webp']
 			}
-		]
-		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
+		]	
 	},
 	{
 		id: 'Avionics for Borealis Sounding Rocket',
 		title: 'Avionics for Borealis Sounding Rocket',
 		start: '2024-02',
-		end: '2025-06',
-		description: ['Placeholder text to preview a project with links only and no report.'],
-		links: [
-			{ label: 'Example link one', url: 'https://example.com' },
-			{ label: 'Example link two', url: 'https://example.org' }
-		]
+		end: '2025-05',
+		description: [
+			'Work in progress',
+			'...'
+		],
+		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
+		//links: [
+			//{ label: 'Example link one', url: 'https://example.com' },
+			//{ label: 'Example link two', url: 'https://example.org' }
+		//]
 	},
 	{
 		id: 'Solar Tracker with Weather Station',
 		title: 'Solar Tracker with Weather Station',
 		start: '2021-10',
 		end: '2022-06',
-		description: ['Placeholder text to preview a project with only a description.']
+		description: [
+			'Work in progress',
+			'...'
+		],
+		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
+		//links: [
+			//{ label: 'Example link one', url: 'https://example.com' },
+			//{ label: 'Example link two', url: 'https://example.org' }
+		//]
 	},
 	
 ];
