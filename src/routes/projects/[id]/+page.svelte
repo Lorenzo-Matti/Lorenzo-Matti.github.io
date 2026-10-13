@@ -114,6 +114,30 @@
 					{/if}
 				</div>
 			{/if}
+			{#if project.press?.length}
+				<section class="mt-12 border-t border-border pt-8">
+					<h2 class="font-mono text-xs tracking-[0.2em] text-label uppercase">Press</h2>
+					<ul class="mt-4 space-y-3">
+						{#each project.press as item (item.file)}
+							<li>
+								<a
+									href={asset(item.file)}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group flex flex-wrap items-baseline gap-x-3 gap-y-1"
+								>
+									<span class="font-display text-lg text-fg transition-colors group-hover:text-accent-hover"
+										><i>{item.outlet}</i>, {item.title}</span
+									>
+									<span class="font-mono text-xs tracking-[0.15em] text-muted uppercase"
+										>{item.date} ↗</span
+									>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</section>
+			{/if}
 		</div>
 	</article>
 </div>

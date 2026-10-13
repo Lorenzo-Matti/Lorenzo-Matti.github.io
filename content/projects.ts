@@ -1,4 +1,4 @@
-import type { AssetPath } from '$app/types';
+import type { AssetPath } from "$app/types";
 
 /**
  * ─── PROJECTS ───────────────────────────────────────────────────────────
@@ -16,45 +16,61 @@ import type { AssetPath } from '$app/types';
 type YearMonth = `${number}-${number}`;
 
 export interface Project {
-	/** Unique, lowercase, words separated by dashes. Becomes the page address. */
-	id: string;
-	title: string;
-	/** Month the project started, e.g. '2025-07'. */
-	start: YearMonth;
-	/** Optional. Month it ended. Leave it out for a single-month project. */
-	end?: YearMonth | 'present';
-	/** Optional. Small label next to the dates, e.g. 'EuRoC Report'. */
-	label?: string;
-	/** The abstract shown on the project page. One string per paragraph. */
-	abstract: string[];
-	/** Optional. Tools and methods, shown as a list under the abstract. */
-	tools?: string[];
-	/** Optional. PDF inside `static/`, e.g. 'reports/euroc-2025.pdf'. */
-	report?: AssetPath;
-	/** Optional. Link to the GitHub repository. */
-	githubUrl?: string;
+  /** Unique, lowercase, words separated by dashes. Becomes the page address. */
+  id: string;
+  title: string;
+  /** Month the project started, e.g. '2025-07'. */
+  start: YearMonth;
+  /** Optional. Month it ended. Leave it out for a single-month project. */
+  end?: YearMonth | "present";
+  /** Optional. Small label next to the dates, e.g. 'EuRoC Report'. */
+  label?: string;
+  /** The abstract shown on the project page. One string per paragraph. */
+  abstract: string[];
+  /** Optional. Tools and methods, shown as a list under the abstract. */
+  tools?: string[];
+  /** Optional. PDF inside `static/`, e.g. 'reports/euroc-2025.pdf'. */
+  report?: AssetPath;
+  /** Optional. Link to the GitHub repository. */
+  githubUrl?: string;
+  /** Optional. Press coverage: an image or PDF of the article inside `static/press/`. */
+  press?: { outlet: string; date: string; title: string; file: AssetPath }[];
 }
 
 export const projects: Project[] = [
-	{
-		id: 'cfd-fem-sounding-rocket',
-		title: 'CFD-FEM Aero-Structural Analysis of a Sounding Rocket',
-		start: '2025-07',
-		end: '2025-10',
-		label: 'EuRoC Report',
-		abstract: [
-			"Would *Nemesis* hold under the worst loads it could meet in flight: maximum dynamic pressure, maximum angle of attack and peak thrust, all at once? I built the CFD-to-FEM workflow that answered it in the team's EuRoC Technical Report, carrying the aerodynamic loads down to every component on the critical path."
-		],
-		tools: [
-			'ANSYS Fluent',
-			'ANSYS Static Structural',
-			'Equivalent beam model',
-			'Inertia relief',
-			'CFD → FEM load transfer',
-			'Safety-margin assessment',
-			'SolidWorks'
-		]
-		// report: 'reports/euroc-2025.pdf',
-		// githubUrl: 'https://github.com/Lorenzo-Matti/...'
-	}
+  {
+    id: "cfd-fem-sounding-rocket",
+    title: "CFD-FEM Aero-Structural Analysis of a Sounding Rocket",
+    start: "2025-07",
+    end: "2025-10",
+    label: "EuRoC Report",
+    abstract: [
+      "Would *Nemesis* hold under the worst loads it could meet in flight: maximum dynamic pressure, maximum angle of attack and peak thrust, all at once? I built the CFD-to-FEM workflow that answered it in the team's EuRoC Technical Report, carrying the aerodynamic loads down to every component on the critical path.",
+    ],
+    tools: [
+      "ANSYS Fluent",
+      "ANSYS Static Structural",
+      "Equivalent beam model",
+      "Inertia relief",
+      "CFD → FEM load transfer",
+      "Safety-margin assessment",
+      "SolidWorks",
+    ],
+    press: [
+      {
+        outlet: "Il Resto del Carlino",
+        date: "14 Oct 2025",
+        title: "Il campus va a razzo (front page)",
+        file: "press/carlino-2025-10-14-cover.webp",
+      },
+      {
+        outlet: "Il Resto del Carlino",
+        date: "14 Oct 2025",
+        title: "Un sogno che prende il volo (p. 5)",
+        file: "press/carlino-2025-10-14-p5.webp",
+      },
+    ],
+    // report: 'reports/euroc-2025.pdf',
+    // githubUrl: 'https://github.com/Lorenzo-Matti/...'
+  },
 ];

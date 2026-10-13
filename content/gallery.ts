@@ -23,8 +23,6 @@ export const photos: AssetPath[] = [
 	'gallery/06.webp',
 	'gallery/07.webp',
 	'gallery/08.webp',
-	'gallery/press-carlino-cover.webp',
-	'gallery/press-carlino-p5.webp',
 	'gallery/09.webp',
 	'gallery/10.webp',
 	'gallery/11.webp',
