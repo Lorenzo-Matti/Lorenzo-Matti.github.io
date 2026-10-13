@@ -20,7 +20,7 @@
 <Hero />
 
 <section id="about" class="mx-auto max-w-6xl scroll-mt-24 px-6 py-24 md:py-32">
-	<SectionHeading index="01" eyebrow="Profile" title={about.title} />
+	<SectionHeading index="01" title={about.title} />
 
 	<!-- The first paragraph is the lead, the rest is body text. Any number of paragraphs works. -->
 	<div class="mt-10 space-y-6 md:ml-[12rem] md:max-w-[64ch]">
@@ -37,7 +37,7 @@
 
 	<!-- Skills close the About block: same anchor in the menu, own numbered opener. -->
 	<div id="skills" class="mt-24 scroll-mt-24 md:mt-32">
-		<SectionHeading index="02" eyebrow="Toolkit" title="Skills" />
+		<SectionHeading index="02" title="Skills" />
 	</div>
 
 	<dl class="mt-12 border-b border-border">
@@ -60,7 +60,7 @@
 
 <section id="projects" class="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 md:pb-32">
 	<!-- Project rows keep their original style; only the opener matches the other sections. -->
-	<SectionHeading index="03" eyebrow="Work" title="Projects" />
+	<SectionHeading index="03" title="Projects" />
 
 	<ul class="mt-12 border-t border-border">
 		{#each sortedProjects as project (project.id)}
@@ -93,6 +93,6 @@
 </section>
 
 <section id="gallery" class="mx-auto max-w-6xl scroll-mt-24 px-6 pb-24 md:pb-32">
-	<SectionHeading index="04" eyebrow="Gallery" title="Behind the projects" />
+	<SectionHeading index="04" title="Behind the projects" />
 	<Gallery />
 </section>
