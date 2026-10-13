@@ -45,9 +45,9 @@ export interface Project {
 export const projects: Project[] = [
 	// ── TEST PROJECTS: only to preview the layout. Delete these four blocks. ──
 	{
-		id: 'test-project-1',
-		title: 'Test Project 1: IMM Tracking of a Non-Cooperative Target',
-		start: '2025-11',
+		id: 'State estimation and interception of a non-cooperative maneuvering target',
+		title: 'State estimation and interception of a non-cooperative maneuvering target',
+		start: '2025-09',
 		end: 'present',
 		description: [
 			'Placeholder text to preview the layout. A general description of the project goes here: the problem, what you did and the main result, in two or three short paragraphs.',
@@ -60,9 +60,9 @@ export const projects: Project[] = [
 		]
 	},
 	{
-		id: 'test-project-2',
-		title: 'Test Project 2: Active Airbrake Control',
-		start: '2025-11',
+		id: 'Atlas Sounding Rocket',
+		title: 'Atlas sounding rocket',
+		start: '2025-10',
 		end: '2026-10',
 		description: [
 			'Placeholder text to preview a project with a report but no links.'
@@ -70,26 +70,7 @@ export const projects: Project[] = [
 		reports: [{ title: 'Technical report', file: 'reports/test-report.pdf' }]
 	},
 	{
-		id: 'test-project-3',
-		title: 'Test Project 3: Flight Computer for a Sounding Rocket',
-		start: '2024-02',
-		end: '2025-10',
-		description: ['Placeholder text to preview a project with links only and no report.'],
-		links: [
-			{ label: 'Example link one', url: 'https://example.com' },
-			{ label: 'Example link two', url: 'https://example.org' }
-		]
-	},
-	{
-		id: 'test-project-4',
-		title: 'Test Project 4: Solar Tracker with Weather Station',
-		start: '2021-10',
-		end: '2022-06',
-		description: ['Placeholder text to preview a project with only a description.']
-	},
-	// ── End of test projects ──
-	{
-		id: 'cfd-fem-sounding-rocket',
+		id: 'Nemesis Sounding Rocket (EuRoC 2025)',
 		title: 'Nemesis Sounding Rocket (EuRoC 2025)',
 		start: '2025-04',
 		end: '2025-10',
@@ -104,5 +85,24 @@ export const projects: Project[] = [
 			}
 		]
 		// reports: [{ title: 'EuRoC Technical Report', file: 'reports/euroc-2025.pdf' }]
-	}
+	},
+	{
+		id: 'Borealis Sounding Rocket',
+		title: 'Borealis Sounding Rocket',
+		start: '2024-02',
+		end: '2025-06',
+		description: ['Placeholder text to preview a project with links only and no report.'],
+		links: [
+			{ label: 'Example link one', url: 'https://example.com' },
+			{ label: 'Example link two', url: 'https://example.org' }
+		]
+	},
+	{
+		id: 'Solar Tracker with Weather Station',
+		title: 'Solar Tracker with Weather Station',
+		start: '2021-10',
+		end: '2022-06',
+		description: ['Placeholder text to preview a project with only a description.']
+	},
+	
 ];
