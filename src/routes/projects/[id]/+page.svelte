@@ -56,7 +56,7 @@
 							download
 							data-umami-event="report-download"
 							data-umami-event-project={project.id}
-							class="group flex items-baseline justify-between gap-6 py-3"
+							class="group flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
 						>
 							<span class="text-fg transition-colors group-hover:text-accent-hover">
 								{report.title}

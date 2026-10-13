@@ -21,16 +21,21 @@
 	});
 </script>
 
-<section class="relative flex min-h-svh items-end overflow-hidden">
+<!--
+	Phones (below md): the video sits uncropped in a 16:9 band under the menu bar,
+	with the name and links below it. From md up: full-screen video, text on top.
+-->
+<section class="relative overflow-hidden pt-16 md:flex md:min-h-svh md:items-end md:pt-0">
 	<!--
 		To change the video, replace the files in static/video/ keeping the same names
 		(see README for the commands that produce them). The browser picks the first
 		source it can play: a lighter 720p file on phones, sharp AV1 on desktop,
 		and H.264 as the fallback for browsers without AV1 (e.g. older Safari).
 	-->
+	<div class="relative md:absolute md:inset-0">
 	<video
 		bind:this={video}
-		class="absolute inset-0 h-full w-full object-cover"
+		class="block aspect-video w-full object-cover md:h-full md:aspect-auto"
 		poster={asset('video/hero-poster.jpg')}
 		autoplay
 		muted
@@ -48,11 +53,12 @@
 	<!-- A light tint for legibility, then a fade into the page background at the bottom. -->
 	<div class="absolute inset-0 bg-bg/15" aria-hidden="true"></div>
 	<div
-		class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-transparent via-bg/60 to-bg"
+		class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-bg md:h-1/2 md:via-bg/60"
 		aria-hidden="true"
 	></div>
+	</div>
 
-	<div class="relative mx-auto w-full max-w-6xl px-6 pt-32 pb-24 md:pb-32">
+	<div class="relative mx-auto w-full max-w-6xl px-6 pt-2 pb-4 md:pt-32 md:pb-32">
 		{#if role}
 			<p
 				class="animate-fade-up flex items-center gap-3 font-mono text-xs tracking-[0.25em] text-fg uppercase"
