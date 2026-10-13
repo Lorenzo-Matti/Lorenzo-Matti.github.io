@@ -44,9 +44,15 @@ export const about = {
  * The values below are examples: replace them with your own.
  */
 export const skills: { group: string; items: string[] }[] = [
-	{ group: 'Programming', items: ['MATLAB', 'C++', 'LaTeX'] },
-	{ group: 'GNC', items: ['6-DOF Flight Dynamics', 'Filter Design', 'Guidance Laws', 'Closed-Loop Control', 'Simulink'] },
-	{ group: 'Electronics', items: ['Arduino', 'Avionics System Design', 'PCB design', 'Hardware-in-the-Loop Testing'] },
-	{ group: 'Project Management', items: ['Technical Team Leadership', 'Timeline & Budget Management', 'Cross-functional Integration'] },
-	{ group: 'Languages', items: ['Italian (native)', 'English (B2)'] }
+	{ group: 'Programming & Tools', items: ['MATLAB', 'Simulink', 'C++', 'LaTeX'] },
+	{
+		group: 'GNC',
+		items: ['6-DOF Flight Dynamics', 'Kalman Filtering', 'IMM Estimation', 'Guidance Laws', 'Closed-Loop Control', 'Monte Carlo Analysis']
+	},
+	{
+		group: 'Electronics',
+		items: ['Avionics System Design', 'PCB Design (KiCad)', 'Sensor Integration (IMU, GPS)', '868 MHz Telemetry', 'Recovery Deployment Circuits', 'Hardware-in-the-Loop Testing']
+	},
+	{ group: 'Leadership', items: ['Technical Team Leadership', 'Timeline & Budget Management'] },
+	{ group: 'Languages', items: ['Italian (Native)', 'English (B2)'] }
 ];
